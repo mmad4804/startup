@@ -21,7 +21,7 @@ A brief description of the application here. Lorem ipsum dolor sit amet, consect
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
+- [x] A concise and compelling elevator pitch
 - [ ] Description of key features
 - [ ] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
@@ -45,15 +45,18 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Sync your Spotify account data
+- Look up and post any of your favorite songs
+- Discover in realtime what others have posted on the global feed
+- Easily add songs you like to your saved list
+- Songs in your list are persistently saved for every time you come back
+- Secure login over HTTPS
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
+- **HTML** - 
 - **CSS** - Description here
 - **React** - Description here
 - **Service** - Description here
