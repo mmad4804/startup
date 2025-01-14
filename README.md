@@ -40,7 +40,7 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Will contain four views for login, home, feed, and saved songs. Individual features include login/register controls, "Add Song" button, and block sections containing song details.
 - **CSS** - Dynamic/responsive design, cohesive color theme, good use of spacing and contrast.
 - **React** - Enables music playback on button presses, load song data into block sections, add songs to saved list.
-- **Service** - Calls to Spotify Web API to getSongs() searched by the user, retrieving artist data as well.
+- **Service** - Calls to Spotify Web API to getSongs() searched by the user, retrieving artist data as well. Internal services include logging users in and retrieving their data.
 - **DB/Login** - Stores the data of users' saved song lists, login information, and recent posts. Can't retrieve data unless authenticated with Spotify account.
 - **WebSocket** - Updates the feed with song choices from other users in realtime.
 
