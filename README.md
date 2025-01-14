@@ -4,20 +4,14 @@
 
 This web application lets users connect with their Spotify accounts to pull their favorite songs for sharing with other users. Users can post, view/listen to others posts in realtime, and save liked songs to their own list.
 
-> [!NOTE]
->  If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
-
 ## 🚀 Specification Deliverable
-
-> [!NOTE]
->  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -50,12 +44,12 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Will contain four views for login, home, feed, and saved songs. Individual features include login/register controls, "Add Song" button, and block sections containing song details.
+- **CSS** - Dynamic/responsive design, cohesive color theme, good use of spacing and contrast.
+- **React** - Enables music playback on button presses, load song data into block sections, add songs to saved list.
+- **Service** - Calls to Spotify Web API to getSongs() searched by the user, retrieving artist data as well.
+- **DB/Login** - Stores the data of users' saved song lists, login information, and recent posts. Can't retrieve data unless authenticated with Spotify account.
+- **WebSocket** - Updates the feed with song choices from other users in realtime.
 
 ## 🚀 AWS deliverable
 
