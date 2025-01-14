@@ -24,13 +24,6 @@ Ever found a new song you may or may not have listened to on repeat way too many
 
 The application features 4 main screens with which users can login, post songs, view their feed, and reference their saved songs.
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
-
 ### Key features
 
 - Sync your Spotify account data
