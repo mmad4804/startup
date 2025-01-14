@@ -17,11 +17,21 @@ For help with Markdown: https://docs.github.com/en/get-started/writing-on-github
 If I want to add a sequence diagram later:
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor User1
+    actor User2
+    User1->>Login: Entering the login information
 ```
 
+-Endpoints in web programming is basically like the functions/methods of object-oriented programming. We make calls to servers/computers, to enable certain features or retrieve data
+
+-Need to have something from the frontend calling to someone else's backend (that's the purpose of a third party service call)
+
+## Development Notes
+
+Good questions should 1) describe what the problem is, 2) what you're trying to do, and 3) what you've already done.
+Good uses of AI would be to critique code, or to explain code that you then rewrite from scratch.
+VIM is a ubiquitous console editor...it's the way we can change text-based data remotely, can use SSH to connect remotely with whatever servers we need. Can login with your DNS
+VIM Commands: :q to quit, :q! to quit when you've made changes, i to enter insert mode, esc to go back to command mmode, and :w to write/serve
 
 ## AWS Notes
 
