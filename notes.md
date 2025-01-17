@@ -32,6 +32,7 @@ sequenceDiagram
 - Good uses of AI would be to critique code, or to explain code that you then rewrite from scratch.
 - VIM is a ubiquitous console editor...it's the way we can change text-based data remotely, can use SSH to connect remotely with whatever servers we need. Can login with your DNS
 - VIM Commands: :q to quit, :q! to quit when you've made changes, i to enter insert mode, esc to go back to command mmode, and :w to write/serve
+- `./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s simon` to deploy on the terminal the new version of simon
 
 ## AWS Notes
 
@@ -70,5 +71,6 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - The main HTML file should usually be named index.html (default)
 - Block elements are a distinct element in the flow of the content structure, while inline doesn't disrupt the flow of a block element's content
 - Ex: `div` is a block element that could have an inline element `b` to bring attention to its subtext
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+- To insert an image, use `<img src="link" alt="text" width="300">` etc
+- Most input elements have some common attributes: `name` of the input, `disabled`, initial `value` of the input, `required` to signify if it has to be filled out to be valid
+- To include an audio file you use `audio` element and use `src` to specify the URL. Include `controls` attribute if you want the user to be able to control the audio playback
