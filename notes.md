@@ -59,4 +59,16 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 
 ## HTML Notes
 
+- We use tags to designate the start/end of an HTML element using (<> and </>)
+- <!DOCTYPE html> should always go at the very beginning of the file
+- HTML elemnt is top level structure, head comes next containing metadata and the <title> within. Body element will contain content structure, with <main> holding the bulk outside of headers, footers, etc
+- Each element can have attributes that describe specific details of the element. Common example is the `id` attribute to distinguish it, or `class` to classify the element into a named group of elements. They're written inside the element tag with a name followed by an optional value. Ex:
+- `<p> id="hello" class="greeting">Hello world</p>`
+- Hyperlinks are represented by an anchor element <a> with an attribute `href` containg the address of the link. Ex:
+- `<a href="https://byu.edu">Go to the Y</a>`
+- Comments can be made using <!-- commented text -->
+- The main HTML file should usually be named index.html (default)
+- Block elements are a distinct element in the flow of the content structure, while inline doesn't disrupt the flow of a block element's content
+- Ex: `div` is a block element that could have an inline element `b` to bring attention to its subtext
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
