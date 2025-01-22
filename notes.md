@@ -74,3 +74,5 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - To insert an image, use `<img src="link" alt="text" width="300">` etc
 - Most input elements have some common attributes: `name` of the input, `disabled`, initial `value` of the input, `required` to signify if it has to be filled out to be valid
 - To include an audio file you use `audio` element and use `src` to specify the URL. Include `controls` attribute if you want the user to be able to control the audio playback
+- Document Object Model (DOM) is like the tree structure that specifies how HTML documents are rendered
+- 
