@@ -94,4 +94,6 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - To create CSS animations, we use `animation` properties and define `keyframes`, example:
 - @keyframes demo {from{font-size: 0vh} to{font-size: 20vh} } to zoom in
 - To debug CSS, you can right-click an element and selext `inspect`
+- Can use the CSS `display` property to show element's children in a flexible or grid orientation, a block display (fills width of parent), or inline (has width as big as content)
+- `<meta name="viewport" content="width=device-width,initial-scale=1" />` use this meta tag in all <head> elements so the browser doesn't scale the page
 - 
