@@ -54,15 +54,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - Four HTML pages (index.html, home.html, feed.html, saved.html) representing the ability to login/register, to post a song, view the feed of what others have posted, and to view the list of saved songs.
+- [x] **Proper HTML element usage** - Each page has header, footer, body, nav, and main tags.
+- [x] **Links** - The header/navigation bar on each page contains links to access the other three pages.
+- [x] **Text** - There is text displaying the song attributes (artist/song name) on both the feed.html and saved.html page.
+- [x] **3rd party API placeholder** - Feed.html has the "+" button to add a song that will initiate the call to Spotify's web API to retrieve song data.
+- [x] **Images** - There is a custom image of the Tuneshare logo embedded in the header of each page.
+- [x] **Login placeholder** - There is an input box and submit buttons to login or create a new account within index.html.
+- [x] **DB data placeholder** - The saved.html page has placeholder values for songs that a user might have saved to their account/DB that would be retrieved every time they log in.
+- [x] **WebSocket placeholder** - Feed.html contains sections representing songs that users will have posted in realtime.
 
 ## 🚀 CSS deliverable
 
