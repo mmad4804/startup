@@ -96,4 +96,25 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - To debug CSS, you can right-click an element and selext `inspect`
 - Can use the CSS `display` property to show element's children in a flexible or grid orientation, a block display (fills width of parent), or inline (has width as big as content)
 - `<meta name="viewport" content="width=device-width,initial-scale=1" />` use this meta tag in all <head> elements so the browser doesn't scale the page
+
+
+## Javascript Notes
+
+- Uses function name(){statements;} format, similar to Java
+- // for block comments
+- Can directly include JavaScript into HTML using `<script>` element, using `src` attribute to reference an external JavaScript file, or putting it directly inline as part of an even attribute handler
+- can then call a function with a button click  for example using `<button onclick="functionName()">`
+- User `require` statement to reference package name (like imports)
+- Use 'let' to declare variables instead of 'var'
+
+## React Notes
+
+- Web frameworks like React help us simplify common patterns, provide common components, to improve performance
+- JSX combines html and javascript into one file
+- we call const jsx = React.createElement("content") to transpile, for the browser to be able to render the javascript
+- Can reference React components, basically functions that can be reused, first by defining it, and then using it in cases like `root.render(<Hello />)`
+- Can also feed it arguments, but if giving multiple, need to make sure they're wrapped into only one element
+- React.useState() is used to be able to change the state of variables or values
+- BrowserRouter  helps map route to components, where given certain routing links, we use/render certain components (might use it to update the home page when selecting songs) (will need to import react-router-dom)
+- Vite is the tool we use to be able to display our React/jsx files
 - 
