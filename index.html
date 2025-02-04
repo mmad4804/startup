@@ -30,16 +30,25 @@
         </header>
 
         <main>
-            <h2>Login to Begin</h2>
+            <h2>Welcome to TuneShare!</h2>
+            <p>Login or create an account to get started</p>
             <form action="home.html" method="post">
-                <label for="username">Username: </label>
-                <input type="text" name="username" id="username" />
-                <br />
-                <label for="password">Password: </label>
-                <input type="password" name ="password" id="password" />
-                <br />
-                <input type="submit" value="Login" />
-                <input type="submit" value="Register" />
+                <section>
+                    <div>
+                        <label for="username">Username: </label>
+                        <input class="textbox" type="text" name="username" id="username" />
+                    </div>
+                    <br />
+                    <div>
+                        <label for="password">Password: </label>
+                        <input class="textbox" type="password" name ="password" id="password" />
+                    </div>
+                    <br />
+                    <div class="buttons">
+                        <input id="login-button" type="submit" value="Login" />
+                        <input id="register-button" type="submit" value="Register" />
+                    </div> 
+                </section>
             </form>
         </main>
 
