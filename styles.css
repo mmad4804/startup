@@ -63,6 +63,14 @@ main {
 h2 {
     color: whitesmoke;
     font-size: 2em;
+    margin: 1em 0em 0em 0em;
+}
+
+p {
+    color: whitesmoke;
+    font-size: 1em;
+    font-style: italic;
+    margin: 0.5em 0em 1em 0em;
 }
 
 form {
@@ -71,9 +79,16 @@ form {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 500px;
-    flex: 3 50vh;
+    max-width: 400px;
     padding: 1em;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 section {
@@ -87,7 +102,16 @@ section {
     background-color: whitesmoke;
 }
 
+label {
+    flex: 1 100px;
+    margin: 0.5em;
+    padding: 0.5em;
+    width: 100px;
+    text-align: center;
+}
+
 .textbox {
+    flex: 3 200px;
     margin: 0.5em;
     padding: 0.5em;
     width: 250px;
