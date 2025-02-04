@@ -59,15 +59,20 @@ main {
 }
 
 button {
+    display: flex;
     padding: 0.5em;
+    margin: .5em;
     border-radius: 5em;
     background: linear-gradient(45deg, #3cdede, #fff04a);
     color: white;
     border: none;
     cursor: pointer;
-    height: 10em;
-    width: 10em;
-    font-size: 1em;
+    height: 2em;
+    width: 2em;
+    font-size: 6em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 h2 {
