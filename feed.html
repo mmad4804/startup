@@ -2,25 +2,24 @@
 <html lang="en">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <head>
+        <link rel="stylesheet" href="feed.css" />
         <title>TuneShare</title>
     </head> 
 
     <body>
         <header>
-            <img src="logo.png" alt="TuneShare Logo" style="width:100px;"/>
+            <img id="logo" src="logo.png" alt="TuneShare Logo"/>
             <h1>TuneShare</h1>
             <div><p>User3502 Logged In</p></div>
 
             <nav>
                 <menu>
-                    <li><a href="index.html">Login</a></li>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="feed.html">Feed</a></li>
-                    <li><a href="saved.html">Saved</a></li>
+                    <li class="nav-bar-item"><a href="home.html">Home</a></li>
+                    <li class="nav-bar-item"><a href="feed.html">Feed</a></li>
+                    <li class="nav-bar-item"><a href="saved.html">Saved</a></li>
+                    <li class="nav-bar-item"><a href="index.html">Logout</a></li>
                 </menu>
             </nav>
-
-            <hr />
         </header>
 
         <main>
@@ -30,7 +29,7 @@
                     <table>
                         <tr>
                             <td>
-                                <button type="button"><span>&#43;</span></button>
+                                <button class="play-button" type="button"><span>&#43;</span></button>
                             </td>
                             <td>
                                 <table>
@@ -41,14 +40,14 @@
                             </td>
                         </tr>
                     </table>
-                    <button type="button">Add to Saved Songs</button>
+                    <button class="saved-songs-button" type="button">Add to Saved Songs</button>
                 </section>
                 <br />
                 <section>
                     <table>
                         <tr>
                             <td>
-                                <button type="button"><span>&#43;</span></button>
+                                <button class="play-button" type="button"><span>&#43;</span></button>
                             </td>
                             <td>
                                 <table>
@@ -59,15 +58,14 @@
                             </td>
                         </tr>
                     </table>
-                    <button type="button">Add to Saved Songs</button>
+                    <button class="saved-songs-button" type="button">Add to Saved Songs</button>
                 </section>
             </ul>
 
         </main>
 
         <footer>
-            <hr />
-            <span class="text-reset">Micaela Madariaga</span>
+            <span class="author">Micaela Madariaga</span>
             <br />
             <a href="https://github.com/mmad4804/startup.git">Github</a>
         </footer>
