@@ -68,12 +68,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - Created headers, footers, and varied main/content/body styling for each of my four pages.
+- [x] **Navigation elements** - I dropped the underlines and changed the font/styling so whichever page a current user is on is bolded.
+- [x] **Responsive to window resizing** - I used flex elements so that the app could look good with reasonable changes to sizing.
+- [x] **Application elements** - Used padding, gradients, and whitespace to create an aeshetic layout of elements.
+- [x] **Application text content** - Imported a new font to be consistent along all pages.
+- [x] **Application images** - Styled the logo to be circular and included graphics for the play buttons.
 
 ## 🚀 React part 1: Routing deliverable
 
