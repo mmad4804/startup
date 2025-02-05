@@ -41,6 +41,13 @@ menu {
     list-style: none;
 }
 
+#current-user {
+    font-weight: 500;
+    padding: 0.5em;
+    border-left: gray solid 2px;
+    margin: 0em 0em 0em 0.5em;
+}
+
 nav {
     flex: 1 200px;
     display: flex;
