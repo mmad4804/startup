@@ -42,6 +42,7 @@ menu {
 }
 
 #current-user {
+    flex: 0 150px;
     font-weight: 500;
     padding: 0.5em;
     border-left: gray solid 2px;
