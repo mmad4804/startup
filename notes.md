@@ -117,4 +117,18 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - React.useState() is used to be able to change the state of variables or values
 - BrowserRouter  helps map route to components, where given certain routing links, we use/render certain components (might use it to update the home page when selecting songs) (will need to import react-router-dom)
 - Vite is the tool we use to be able to display our React/jsx files
+
+## Javascript Notes
+
+- With console.log(), can use it like print feature to help debug
+- Can call console.time() or even console.count()
+- Functions are another type in JS, meaning we can pass them as parameters too
+- Anonymous functions basically define the function within wherever we're calling; the arrow syntax makes it more concise
+- ex: 'doMath((a,b) => a - b, 5, 3));'
+- Once an arrow function has multiple lines or we add brackets, we need to explicitly state a return value
+- Closure: definition + stack of variables with their states, provides like exceptions to scope
+- ex: 'function makeClosure(init) { let closureValue = init; return () => 'closure $(++closureValue}';'
+- then we can call closure() and it won't init again but just return the original incremented value over and over again
+- Need to link variables to react so that it knows to rerender the html page when variables are updated
+- If the state of the variable ever changes, then we update the html page
 - 
