@@ -1,82 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-body {
-    background-color: lightgray;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-}
-
-header {
-    flex: 0 80px;
-    display: flex;
-    flex-direction: row;
-    background-color: whitesmoke;
-    justify-content: space-between;
-    align-items: center;
-    width: fill-parent;
-    margin: 0;
-    padding: 0.5em;
-}
-
-#logo {
-    border-radius: 10em;
-    width: 50px;
-    height: 50px;
-    padding: 0.5em;
-    align-items: center;
-} 
-
-menu {
-    display: flex;
-    flex-direction: row !important;
-    list-style: none;
-}
-
-#current-user {
-    font-weight: 500;
-    padding: 0.5em;
-    border-left: gray solid 2px;
-    margin: 0em 0em 0em 0.5em;
-}
-
-nav {
-    flex: 1 200px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    padding: 0em 2em 0em 0em;
-}
-
-.nav-bar-item {
-    padding: 0 0.3em;
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-    font-size: 1.2em;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-#login-link {
-    font-weight: 700;
-    font-style: bold;
-    font-size: 1.2em;
-}
-
-main {
+.main_feed {
     flex: 1 calc(100vh - 110px);
     display: flex;
     flex-direction: column;
@@ -86,7 +10,15 @@ main {
 
 }
 
-ul {
+#feed-title {
+    flex: 0 1em;
+    text-align: center;
+    padding: 0.5em 0em 0em;
+    margin: 0;
+    color: whitesmoke
+}
+
+.feed-ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,7 +27,7 @@ ul {
     padding: 0;
 }
 
-section {
+.feed-section {
     min-width: 300px;
     width: 60vw;
     display: flex;
@@ -107,14 +39,14 @@ section {
     border-radius: .5em;
 }
 
-table {
+.feed-table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     margin: 0.5em;
 }
 
-tr {
+.feed-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -191,48 +123,3 @@ tr {
     align-items: center;
     text-align: center;
 }
-
-h2 {
-    flex: 0 1em;
-    text-align: center;
-    padding: 0.5em 0em 0em;
-    margin: 0;
-    color: whitesmoke
-}
-
-footer {
-    flex: 0 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: whitesmoke;
-    padding: 0.5em 2em 0.5em 0.5em;
-    align-items: center;
-    width: fill-parent;
-}
-
-#github {
-    justify-content: center;
-    font-weight: 500;
-    padding: 0.5em;
-}
-
-.author {
-    flex: 0 300px;
-    padding: 0.5em;
-}
-
-@media (orientation: portrait) {
-    main {
-      flex-direction: column;
-    }
-  }
-  
-  @media (max-height: 500px) {
-    header {
-      display: none;
-    }
-    footer {
-      display: none;
-    }
-  }
