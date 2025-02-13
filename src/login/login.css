@@ -10,7 +10,7 @@
 
 .login-title {
     color: whitesmoke;
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: 600;
     font-style: bold;
     margin: 0em;
@@ -19,7 +19,7 @@
 
 #login-instructions {
     color: whitesmoke;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-style: italic;
     margin: 0.5em 0em 1em 0em;
     text-align: center;
