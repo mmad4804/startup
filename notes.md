@@ -132,3 +132,14 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - Need to link variables to react so that it knows to rerender the html page when variables are updated
 - If the state of the variable ever changes, then we update the html page
 - 
+
+- Every attribute we add to an html element in jsx becomes a property in react that we can access later
+- React basically monitors if any state has changed, and if so, reacts to it by rerendering the page
+- JSX doesn't do CSS styles, but have to use {} to show we're escaping JSX and then another {} set to define your object literal
+- Begin by setting state variables that we want to keep track of to be able to update our elementss
+- Ex: 'const [value, updateFunction] = React.useState('defaultValue');'
+- And then we can reference those values in the html elements as <element>{value}</element>
+- We'll also need a function to call our updateFunction() that allows us to set/update our value, and then we just need to call that function somewhere
+- React.useEffect(() => {}, []); [] meaning its only called on the initial render...and inside of this function we can call all the updateFunctions() of the state variables we want to update
+- Can use actual javascript (if statements) and insert with {} into jsx html elements
+- 
