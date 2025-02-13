@@ -18,15 +18,29 @@ export default function App() {
 
                     <nav>
                         <menu>
-                            <li className="nav-bar-item" id="login-link"><a href="index.html">Login</a></li>
-                            <li className="nav-bar-item"><a href="home.html">Home</a></li>
-                            <li className="nav-bar-item"><a href="feed.html">Feed</a></li>
-                            <li className="nav-bar-item"><a href="saved.html">Saved</a></li>
+                            <li className="nav-bar-item" id="login-link">
+                                <NavLink className='nav-link' to="">Login</NavLink>
+                            </li>
+                            <li className="nav-bar-item">
+                                <NavLink className='nav-link' to="home">Home</NavLink>
+                            </li>
+                            <li className="nav-bar-item">
+                                <NavLink className='nav-link' to="feed">Feed</NavLink>
+                            </li>
+                            <li className="nav-bar-item">
+                                <NavLink className='nav-link' to="saved">Saved</NavLink>
+                            </li>
                         </menu>
                     </nav>
                 </header>
 
-                <main>App components go here</main>
+                <Routes>
+                    <Route path="/" element={<Login />} exact />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/feed" element={<Feed />} />
+                    <Route path="/saved" element={<Saved />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
 
                 <footer>
                     <span className="author">Micaela Madariaga</span>
@@ -37,4 +51,12 @@ export default function App() {
         </div>
     </BrowserRouter>
   )
+}
+
+function NotFound() {
+  return (
+    <main>
+      <div>404: Return to sender. Address unkown.</div>
+    </main>
+  );
 }
