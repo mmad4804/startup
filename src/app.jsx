@@ -13,11 +13,11 @@ export default function App() {
             <body className="app-body">
                 <header className="app-header">
                     <img id="logo" src="logo.png" alt="TuneShare Logo"/>
-                    <h1>TuneShare</h1>
+                    <h1 className="site-title">TuneShare</h1>
 
                     <nav className="app-nav-bar">
                         <menu className="app-menu">
-                            <li className="nav-bar-item" id="login-link">
+                            <li className="nav-bar-item">
                                 <NavLink className='nav-link' to="">Login</NavLink>
                             </li>
                             <li className="nav-bar-item">
@@ -32,7 +32,7 @@ export default function App() {
                         </menu>
                     </nav>
                 </header>
-
+                
                 <Routes>
                     <Route path="/" element={<Login />} exact />
                     <Route path="/home" element={<Home />} />

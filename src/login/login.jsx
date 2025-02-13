@@ -9,11 +9,11 @@ export function Login() {
             <form className="login-form" action="home.html" method="post">
                 <section className="login-section">
                     <div className="form-group">
-                        <label className="login-label" for="username">Username:</label>
+                        <label className="login-label" for="username">Username</label>
                         <input className="textbox" type="text" name="username" id="username" />
                     </div>
                     <div class="form-group">
-                        <label className="login-label" for="password">Password:</label>
+                        <label className="login-label" for="password">Password</label>
                         <input className="textbox" type="password" name ="password" id="password" />
                     </div>
                     <br />
