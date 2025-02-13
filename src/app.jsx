@@ -10,14 +10,13 @@ import { Saved } from './saved/saved';
 export default function App() {
   return (
     <BrowserRouter>
-        <div>
-            <body>
-                <header>
+            <body className="app-body">
+                <header className="app-header">
                     <img id="logo" src="logo.png" alt="TuneShare Logo"/>
                     <h1>TuneShare</h1>
 
-                    <nav>
-                        <menu>
+                    <nav className="app-nav-bar">
+                        <menu className="app-menu">
                             <li className="nav-bar-item" id="login-link">
                                 <NavLink className='nav-link' to="">Login</NavLink>
                             </li>
@@ -42,13 +41,12 @@ export default function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
 
-                <footer>
+                <footer className="app-footer">
                     <span className="author">Micaela Madariaga</span>
                     <br />
                     <a id="github" href="https://github.com/mmad4804/startup.git">Github</a>
                 </footer>
             </body>
-        </div>
     </BrowserRouter>
   )
 }

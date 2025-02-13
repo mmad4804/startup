@@ -1,4 +1,4 @@
-body {
+.app-body {
     background-color: lightgray;
     margin: 0;
     width: 100%;
@@ -12,7 +12,7 @@ body {
 
 }
 
-header {
+.app-header {
     flex: 0 80px;
     display: flex;
     flex-direction: row;
@@ -32,19 +32,19 @@ header {
     align-items: center;
 } 
 
-menu {
-    display: flex;
-    flex-direction: row !important;
-    list-style: none;
-}
-
-nav {
+.app-nav-bar {
     flex: 1 200px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: end;
     padding: 0em 2em 0em 0em;
+}
+
+.app-menu {
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
 }
 
 .nav-bar-item {
@@ -55,7 +55,7 @@ nav {
     font-size: 1.2em;
 }
 
-a {
+.nav-link {
     text-decoration: none;
     color: black;
 }
@@ -190,7 +190,7 @@ label {
     padding: 0.5em;
 }
 
-footer {
+.app-footer {
     flex: 0 30px;
     display: flex;
     flex-direction: row;
