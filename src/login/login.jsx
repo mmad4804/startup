@@ -1,7 +1,9 @@
 import React from 'react';
 import './login.css';
 
-export function Login() {
+import { AuthState } from './authState';
+
+export function Login({ userName, authState, onAuthChange }) {
     return (
         <main className="main_login">
             <h2 className="login-title">Welcome to TuneShare!</h2>
