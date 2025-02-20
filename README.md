@@ -79,9 +79,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
+- [x] **Bundled using Vite** - Installed and used Vite to bundle.
+- [x] **Components** - Created separate view components for app, home, feed, login, and saved using elements from the original html pages.
+- [x] **Router** - Implemented a router handling paths to each of my four view components, to be activated as the user navigates through the menu.
 
 ## 🚀 React part 2: Reactivity
 
