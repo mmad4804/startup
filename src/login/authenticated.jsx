@@ -10,19 +10,19 @@ export function Authenticated(props) {
 
     function logout() {
         localStorage.removeItem('userName');
+        console.log('Logging out');
         props.onLogout();
     }
 
     return (
         <div>
             <div className='playerName'>{props.userName}</div>
-            <Button variant='primary' onClick={() => navigate('/play')}>
-                Play
+            <Button variant='primary' onClick={() => navigate('/home')}>
+                Home
             </Button>
             <Button variant='secondary' onClick={() => logout()}>
                 Logout
             </Button>
-            filler for now
         </div>
     )
 }
