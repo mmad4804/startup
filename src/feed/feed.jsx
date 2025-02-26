@@ -4,7 +4,7 @@ import { songNotifier } from "./song";
 import "./feed.css";
 
 export function Feed() {
-  const [songs, setSongs] = React.useState([]);
+  const [events, setSongs] = React.useState([]);
 
   React.useEffect(() => {
     songNotifier.addHandler(handleNewSong);
@@ -26,7 +26,7 @@ export function Feed() {
 
   function createPostedSongList() {
     const songInfo = [];
-    for (const [i, song] of songs.entries()) {
+    for (const [i, song] of events.entries()) {
       songInfo.push(
         <section key={i} className="feed-section">
           <table className="feed-table">
@@ -62,6 +62,7 @@ export function Feed() {
         </section>
       );
     }
+    return songInfo;
   }
 
   return (
