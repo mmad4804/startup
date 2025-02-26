@@ -28,8 +28,8 @@ export function Feed() {
     const songInfo = [];
     for (const [i, song] of events.entries()) {
       songInfo.push(
-        <section key={i} className="feed-section">
-          <table className="feed-table">
+        <thead key={i} className="feed-section">
+          <tbody className="feed-table">
             <tr className="feed-row">
               <td class="button-section">
                 <button class="play-button" type="button">
@@ -42,36 +42,45 @@ export function Feed() {
                 </button>
               </td>
               <td class="song-info">
-                <table className="feed-table">
+                <tbody className="feed-table">
                   <tr className="feed-row">
-                    <div class="username">{song.username}</div>
+                    <td class="username">{song.username}</td>
                   </tr>
                   <tr className="feed-row">
-                    <h3 class="song-title">{song.title}</h3>
+                    <td class="song-title">{song.title}</td>
                   </tr>
                   <tr className="feed-row">
-                    <div class="artist">{song.artist}</div>
+                    <td class="artist">{song.artist}</td>
                   </tr>
-                </table>
+                </tbody>
               </td>
             </tr>
-          </table>
-          <button class="saved-songs-button" type="button">
+          </tbody>
+          <button
+            class="saved-songs-button"
+            onClick={() => addToSavedSongs(song.title, song.artist)}
+            type="button"
+          >
             Add to Saved Songs
           </button>
-        </section>
+        </thead>
       );
     }
     return songInfo;
   }
 
+  function addToSavedSongs(title, artist) {
+    const song = { title: artist };
+    const savedSongs = localStorage.getItem("savedSongText");
+    const songsList = savedSongs ? JSON.parse(savedSongs) : [];
+    songsList.push(song);
+    localStorage.setItem("savedSongText", JSON.stringify(songsList));
+  }
+
   return (
     <main className="main_feed">
       <h2 id="feed-title">See What Others Are Posting</h2>
-      <ul className="feed-ul">
-        {createPostedSongList()}
-        <br />
-      </ul>
+      <table className="feed-ul">{createPostedSongList()}</table>
     </main>
   );
 }
