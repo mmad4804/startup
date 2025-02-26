@@ -16,8 +16,8 @@ export function Saved() {
   if (savedSongs.length) {
     for (const [i, song] of savedSongs.entries()) {
       songInfo.push(
-        <section className="song" key={i}>
-          <tr className="song-row">
+        <thead className="song" key={i}>
+          <tbody className="song-row">
             <td>
               <button className="play-button" type="button">
                 <span>
@@ -26,23 +26,23 @@ export function Saved() {
               </button>
             </td>
             <td>
-              <table className="song-table">
+              <tbody className="song-table">
                 <tr className="song-row">
-                  <h3 className="song-title">{song.title}</h3>
+                  <td className="song-title">{song.title}</td>
                 </tr>
                 <tr className="song-row">
-                  <p className="artist">{song.artist}</p>
+                  <td className="artist">{song.artist}</td>
                 </tr>
-              </table>
+              </tbody>
             </td>
-          </tr>
-        </section>
+          </tbody>
+        </thead>
       );
     }
   } else {
     songInfo.push(
       <tr className="song-row" key={0}>
-        <h3 className="song-title">No saved songs</h3>
+        <td className="song-title">No saved songs</td>
       </tr>
     );
   }
@@ -50,63 +50,9 @@ export function Saved() {
   return (
     <main className="main_saved">
       <h2 className="main-title">Your Saved Songs</h2>
-      <ul className="saved-songs">
-        {songInfo}
-        <br></br>
-        <section className="song">
-          <table className="song-table">
-            <tr className="song-row">
-              <td>
-                <button className="play-button" type="button">
-                  <span>
-                    <img
-                      src="play-con.webp"
-                      className="play-button-image"
-                    ></img>
-                  </span>
-                </button>
-              </td>
-              <td>
-                <table className="song-table">
-                  <tr className="song-row">
-                    <h3 className="song-title">Range Rover</h3>
-                  </tr>
-                  <tr className="song-row">
-                    <p className="artist">Ben Rector</p>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </section>
-        <br></br>
-        <section className="song">
-          <table className="song-table">
-            <tr className="song-row">
-              <td>
-                <button className="play-button" type="button">
-                  <span>
-                    <img
-                      src="play-con.webp"
-                      className="play-button-image"
-                    ></img>
-                  </span>
-                </button>
-              </td>
-              <td>
-                <table className="song-table">
-                  <tr className="song-row">
-                    <h3 className="song-title">Stargazing</h3>
-                  </tr>
-                  <tr className="song-row">
-                    <p className="artist">Miles Smyth</p>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </section>
-      </ul>
+      <table className="saved-songs">
+        <tbody>{songInfo}</tbody>
+      </table>
     </main>
   );
 }
