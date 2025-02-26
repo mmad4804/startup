@@ -1,7 +1,29 @@
 import React from "react";
+
+import { songNotifier } from "./song";
 import "./feed.css";
 
 export function Feed() {
+  const [songs, setSongs] = React.useState([]);
+
+  React.useEffect(() => {
+    songNotifier.addHandler(handleNewSong);
+
+    return () => {
+      songNotifier.removeHandler(handleNewSong);
+    };
+  }, []);
+
+  function handleNewSong(song) {
+    setSongs((prevSongs) => {
+      let newSongs = [song, ...prevSongs];
+      if (newSongs.length > 10) {
+        newSongs = newSongs.slice(0, 10);
+      }
+      return newSongs;
+    });
+  }
+
   return (
     <main className="main_feed">
       <h2 id="feed-title">See What Others Are Posting</h2>
