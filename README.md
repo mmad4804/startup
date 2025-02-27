@@ -87,8 +87,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Everything is working in its basic form, with future technologies mocked out.
+  - [x] **Login** - Login/register buttons are disabled until a user enters their username and password. They are then redirected to the home page.
+  - [x] **Home** - This page allows a user to dynamically post their song of the day, which then shows up in the feed. In the next phases, this will include interactions with Spotify's web API to select a song.
+  - [x] **Feed** - Mocked out websocket with random data that is generated and posted to the feed. Users can press the play button to hear the audio track or the "Add to Saved Songs" button to add it to their saved list page.
+  - [x] **Saved** - Mocked out interactions with future database using localStorage instead. Users can save songs they like and see them every time they log in.
+- [x] **Hooks** - Used `React.useState` and React.useEffect` to track various changes in the login or song forms, or when new songs were generated to the feed.
 
 ## 🚀 Service deliverable
 
