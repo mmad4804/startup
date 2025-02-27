@@ -131,7 +131,6 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - then we can call closure() and it won't init again but just return the original incremented value over and over again
 - Need to link variables to react so that it knows to rerender the html page when variables are updated
 - If the state of the variable ever changes, then we update the html page
-- 
 
 - Every attribute we add to an html element in jsx becomes a property in react that we can access later
 - React basically monitors if any state has changed, and if so, reacts to it by rerendering the page
@@ -142,4 +141,33 @@ Caddy helps route HTTP requests, basically a service that listens and serves up 
 - We'll also need a function to call our updateFunction() that allows us to set/update our value, and then we just need to call that function somewhere
 - React.useEffect(() => {}, []); [] meaning its only called on the initial render...and inside of this function we can call all the updateFunctions() of the state variables we want to update
 - Can use actual javascript (if statements) and insert with {} into jsx html elements
-- 
+
+- Browser rendering is single threaded, meaning that things can only be rendered one at a time, nothing running in parallel
+- Can be tricky if all the computing power is directed to a task, because then nothing else on your page will be working until the task is completed -> Promises help us work asynchronously
+- Each Promise has a state: could be pending, fulfilled, or rejected
+- resolve is a function in javascript that will change our promise state to fulfilled, need to create our functions to implement resolve and reject
+- ex: 'const p = new Promise(ourFunction);' where function ourFunction(resolve, reject) {//implements resolve, reject}
+- 'p.then((result) => callNewFunction() or console.log(result))' is basically doing whatever you want if the result is fulfilled
+-  Every Promise has a state (fulfilled) and a result ('done')
+-  .catch() is used for reject or failed results, .finally() is always called at the very end
+-  'await' makes a then for you, so it just gives the result of a promise without the promise itself, but it will block the next code from running until it resolves or rejects
+- The promises/await/async are going to be very crucial for web api calls so our page doesn't lock up while we're trying to retrieve information!
+- If we have a function returning a promise, we can wrap it with await to only return its result
+- We add async at the beginning of a function declaration to know that we're returning a promise that will be connected to an await
+- When we call await, that function and all the parents have to be async (top level module function)
+
+
+## Web Services
+- Browser requests files over HTTPS, our Node.js web service returns those static files like index.html
+- But we can also request other dynamic resources over HTTPS (like our 3rd party web api call). We'll end up modifying our own web service to have endpoints that we can call with HTTPS to [POST]/[GET] etc
+- And our service can call other services! Like the database, all happening on the backend
+- URL (Uniform Resource Locator) is composed of scheme, domain, port, path, parameters, anchor
+- Caddy routes our program for us, in the sense it is running on port 443. It looks at the requested domain names, and then will move us to another port
+- We also expose port 22 to write and copy our files over when deploying
+- HTTP-Hyper Text Transfer Protocol. To make a request, we specify the method, give it a path, and version. We use headers afterwards as parameters to give more information, and then a body
+- GET gets a resource, POST creates a resource
+- We then get our response, which has the version and status code, headers, and body that it gave us back
+- Express is Javascript that write wrappers for our HTML
+- Express is our constructor and default functionality, 'app' is our service application, 'req' is our request object, 'res' is our response object
+- `app.use(express.static('public'));` looks for those files in the public directory
+- whatever term you use after app. will be the http method you want to use linked with middleware functions
