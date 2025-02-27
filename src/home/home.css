@@ -1,40 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 .main-home {
-    flex: 1 calc(100vh - 110px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(45deg, #3cdede, #fff04a);
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #3cdede, #fff04a);
 }
 
 .button-div {
-    flex: 1 25vh;
-    margin: 4em 0em 0em 0em;
+  flex: 1 25vh;
+  margin: 4em 0em 0em 0em;
 }
 
 .add-song-button {
-    display: flex;
-    padding: 0.5em;
-    margin: .5em;
-    border-radius: 5em;
-    background-color: whitesmoke;
-    border: none;
-    cursor: pointer;
-    height: 2em;
-    width: 2em;
-    font-size: 6em;
-    color: #3cdede;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 5em;
+  background-color: whitesmoke;
+  border: none;
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+  font-size: 6em;
+  color: #3cdede;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #add-song-title {
-    flex: 1 25vh;
-    text-align: center;
-    color: whitesmoke;
-    font-size: 2em;
-    margin-bottom: 1em;
+  flex: 1 25vh;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.song-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 200px;
+  max-width: 500px;
+  padding: 1em;
+}
+
+.song-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: whitesmoke;
+}
+
+.song-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.song-label {
+  flex: 1 100px;
+  width: 100px;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-align: center;
+}
+
+.textbox {
+  flex: 3 200px;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 250px;
+  border-radius: 2em;
+  border: 2px solid lightgray;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  width: 100%;
+}
+
+#post-button {
+  flex: 1 25vh;
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 5em;
+  background-color: #3cdede;
+  border: 2px solid white;
+  cursor: pointer;
+  height: 2em;
+  width: 5em;
+  font-size: 1em;
+  color: whitesmoke;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 3em;
+}
+
+#clear-button {
+  flex: 1 25vh;
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 5em;
+  background-color: white;
+  border: 2px solid #3cdede;
+  cursor: pointer;
+  height: 2em;
+  width: 5em;
+  font-size: 1em;
+  color: #3cdede;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 3em;
 }
