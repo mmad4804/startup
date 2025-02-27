@@ -6,11 +6,13 @@ export function Home() {
   const [songTitle, setSongTitle] = React.useState("");
   const [songArtist, setSongArtist] = React.useState("");
   const [formEnabled, setFormEnabled] = React.useState(false);
+  const [buttonEnabled, setButtonEnabled] = React.useState(true);
 
   async function setSongDetails(title, artist) {
     const song = { title: title, artist: artist };
     const mySong = localStorage.setItem("mySong", song);
     setFormEnabled(false);
+    setButtonEnabled(true);
   }
 
   async function clearSongDetails(title, artist) {
@@ -56,14 +58,14 @@ export function Home() {
           <div className="buttons">
             <Button
               id="post-button"
-              onClick={() => setSongDetails(title, artist)}
+              onClick={() => setSongDetails(songTitle, songArtist)}
               disabled={!songTitle || !songArtist}
             >
               Post
             </Button>
             <Button
               id="clear-button"
-              onClick={() => clearSongDetails()}
+              onClick={() => clearSongDetails(songTitle, songArtist)}
               disabled={!songTitle || !songArtist}
             >
               Clear
@@ -74,21 +76,24 @@ export function Home() {
     );
   }
 
-  function addSong() {
+  function addSongForm() {
     setFormEnabled(true);
+    setButtonEnabled(false);
   }
 
   return (
     <main className="main_home">
       <div className="button-div">
         {formEnabled && songOfTheDay()}
-        <button
-          className="add-song-button"
-          onClick={() => addSong()}
-          type="button"
-        >
-          +
-        </button>
+        {buttonEnabled && (
+          <button
+            className="add-song-button"
+            onClick={() => addSongForm()}
+            type="button"
+          >
+            +
+          </button>
+        )}
       </div>
       <h2 id="add-song-title">Add Your Song of the Day!</h2>
     </main>

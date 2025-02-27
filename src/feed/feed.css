@@ -18,20 +18,11 @@
   font-size: 2em;
 }
 
-.feed-ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0;
-}
-
 .feed-section {
   min-width: 300px;
   width: 60vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: whitesmoke;
   justify-content: center;
   align-items: center;
@@ -40,18 +31,39 @@
   margin: 10px;
 }
 
-.feed-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0.5em;
+.feed-body {
+  flex: 1;
+  max-width: 100%;
+  align-items: center;
+}
+
+.col-1 {
+  max-width: 50%;
 }
 
 .feed-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  max-width: 80%;
+  justify-content: start;
   align-items: center;
+}
+
+.feed-song-row {
+  width: 100%;
+  justify-self: center;
+  display: block;
+  align-self: center;
+}
+
+.feed-song-button {
+  width: 100%;
+  justify-self: center;
+  display: block;
+  align-self: center;
+}
+
+.button-section {
+  padding: 0.5em;
+  width: 50px;
 }
 
 .saved-songs-button {
@@ -69,7 +81,7 @@
 
 .username {
   flex: 1 1em;
-  padding: 0;
+  padding-top: 0.5em;
   margin: 0.25em 0em 0em;
   font-size: 0.75em;
   text-align: start;
@@ -77,15 +89,15 @@
 }
 
 .song-title {
-  flex: 3 1em;
+  flex: 2 1em;
   font-size: 1.6em;
-  margin: 0.25em 0em 0em;
+  margin: 0em 0em 0em;
   text-align: start;
 }
 
 .artist {
   flex: 2 1em;
-  padding: 0;
+  padding-bottom: 0.5em;
   margin: 0.5em 0em 0em 0em;
   text-align: start;
 }

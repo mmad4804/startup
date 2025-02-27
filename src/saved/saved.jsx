@@ -16,8 +16,8 @@ export function Saved() {
   if (savedSongs.length) {
     for (const [i, song] of savedSongs.entries()) {
       songInfo.push(
-        <table className="saved-songs">
-          <colgroup className="song" key={i}>
+        <table className="saved-songs" key={i}>
+          <colgroup className="song">
             <col />
           </colgroup>
           <tbody className="song">

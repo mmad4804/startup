@@ -2,9 +2,15 @@ import React from "react";
 
 import { songNotifier } from "./song";
 import "./feed.css";
+import { useRef } from "react";
 
 export function Feed() {
   const [events, setSongs] = React.useState([]);
+  const audioRef = useRef("");
+
+  const handlePlay = () => {
+    audioRef.current.play();
+  };
 
   React.useEffect(() => {
     songNotifier.addHandler(handleNewSong);
@@ -28,11 +34,17 @@ export function Feed() {
     const songInfo = [];
     for (const [i, song] of events.entries()) {
       songInfo.push(
-        <thead key={i} className="feed-section">
-          <tbody className="feed-table">
-            <tr className="feed-row">
-              <td className="button-section">
-                <button className="play-button" type="button">
+        <table className="feed-section" key={i}>
+          <tbody className="feed-body">
+            <tr className="col-1">
+              <td rowSpan="4" className="button-section">
+                <button
+                  className="play-button"
+                  onClick={() => {
+                    handlePlay;
+                  }}
+                  type="button"
+                >
                   <span>
                     <img
                       className="play-button-image"
@@ -40,30 +52,35 @@ export function Feed() {
                     ></img>
                   </span>
                 </button>
+                <audio
+                  ref={audioRef}
+                  className="test-audio"
+                  src="chill-audio"
+                ></audio>
               </td>
-              <td className="song-info">
-                <tbody className="feed-table">
-                  <tr className="feed-row">
-                    <td className="username">{song.username}</td>
-                  </tr>
-                  <tr className="feed-row">
-                    <td className="song-title">{song.title}</td>
-                  </tr>
-                  <tr className="feed-row">
-                    <td className="artist">{song.artist}</td>
-                  </tr>
-                </tbody>
+            </tr>
+            <tr className="feed-row">
+              <td className="username">{song.username}</td>
+            </tr>
+            <tr className="feed-row">
+              <td className="song-title">{song.title}</td>
+            </tr>
+            <tr className="feed-row">
+              <td className="artist">{song.artist}</td>
+            </tr>
+            <tr colSpan="2" className="feed-song-row">
+              <td className="feed-song-button">
+                <button
+                  className="saved-songs-button"
+                  onClick={() => addToSavedSongs(song.title, song.artist)}
+                  type="button"
+                >
+                  Add to Saved Songs
+                </button>
               </td>
             </tr>
           </tbody>
-          <button
-            className="saved-songs-button"
-            onClick={() => addToSavedSongs(song.title, song.artist)}
-            type="button"
-          >
-            Add to Saved Songs
-          </button>
-        </thead>
+        </table>
       );
     }
     return songInfo;
@@ -80,7 +97,7 @@ export function Feed() {
   return (
     <main className="main_feed">
       <h2 id="feed-title">See What Others Are Posting</h2>
-      <table className="feed-ul">{createPostedSongList()}</table>
+      {createPostedSongList()}
     </main>
   );
 }
