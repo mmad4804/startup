@@ -7,9 +7,17 @@ import { useRef } from "react";
 export function Feed() {
   const [events, setSongs] = React.useState([]);
   const audioRef = useRef("");
+  const [isPlaying, setIsPlaying] = React.useState(false);
 
   const handlePlay = () => {
-    audioRef.current.play();
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
   };
 
   React.useEffect(() => {
@@ -40,9 +48,7 @@ export function Feed() {
               <td rowSpan="4" className="button-section">
                 <button
                   className="play-button"
-                  onClick={() => {
-                    handlePlay;
-                  }}
+                  onClick={handlePlay}
                   type="button"
                 >
                   <span>
@@ -55,7 +61,7 @@ export function Feed() {
                 <audio
                   ref={audioRef}
                   className="test-audio"
-                  src="chill-audio"
+                  src="chill-audio.mp3"
                 ></audio>
               </td>
             </tr>

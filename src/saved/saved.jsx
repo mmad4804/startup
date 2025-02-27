@@ -1,8 +1,22 @@
 import React from "react";
 import "./saved.css";
+import { useRef } from "react";
 
 export function Saved() {
   const [savedSongs, setSavedSongs] = React.useState([]);
+  const audioRef = useRef("");
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
+  const handlePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   //Make sure spotify web api gives json song data
   React.useEffect(() => {
@@ -23,7 +37,11 @@ export function Saved() {
           <tbody className="song">
             <tr className="song-row">
               <td scope="col">
-                <button className="play-button" type="button">
+                <button
+                  className="play-button"
+                  onClick={handlePlay}
+                  type="button"
+                >
                   <span>
                     <img
                       className="play-button-image"
@@ -31,6 +49,11 @@ export function Saved() {
                     ></img>
                   </span>
                 </button>
+                <audio
+                  ref={audioRef}
+                  className="test-audio"
+                  src="chill-audio.mp3"
+                ></audio>
               </td>
             </tr>
             <tr className="song-stacked">
