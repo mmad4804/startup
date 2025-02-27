@@ -23,6 +23,16 @@ export function Feed() {
   React.useEffect(() => {
     songNotifier.addHandler(handleNewSong);
 
+    const mySong = localStorage.getItem("mySong");
+    if (mySong) {
+      const currentSong = JSON.parse(mySong);
+      songNotifier.postSong(
+        currentSong.title,
+        currentSong.artist,
+        currentSong.username
+      );
+    }
+
     return () => {
       songNotifier.removeHandler(handleNewSong);
     };

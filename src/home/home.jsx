@@ -2,14 +2,18 @@ import React from "react";
 import "./home.css";
 import Button from "react-bootstrap/Button";
 
-export function Home() {
+export function Home({ userName }) {
   const [songTitle, setSongTitle] = React.useState("");
   const [songArtist, setSongArtist] = React.useState("");
   const [formEnabled, setFormEnabled] = React.useState(false);
   const [buttonEnabled, setButtonEnabled] = React.useState(true);
 
   async function setSongDetails(title, artist) {
-    const song = { title: title, artist: artist };
+    const song = JSON.stringify({
+      title: title,
+      artist: artist,
+      username: userName,
+    });
     const mySong = localStorage.setItem("mySong", song);
     setFormEnabled(false);
     setButtonEnabled(true);
