@@ -16,43 +16,47 @@ export function Saved() {
   if (savedSongs.length) {
     for (const [i, song] of savedSongs.entries()) {
       songInfo.push(
-        <thead className="song" key={i}>
-          <tbody className="song-row">
-            <td>
-              <button className="play-button" type="button">
-                <span>
-                  <img className="play-button-image" src="play-con.webp"></img>
-                </span>
-              </button>
-            </td>
-            <td>
-              <tbody className="song-table">
-                <tr className="song-row">
-                  <td className="song-title">{song.title}</td>
-                </tr>
-                <tr className="song-row">
-                  <td className="artist">{song.artist}</td>
-                </tr>
-              </tbody>
-            </td>
+        <table className="saved-songs">
+          <colgroup className="song" key={i}>
+            <col />
+          </colgroup>
+          <tbody className="song">
+            <tr className="song-row">
+              <td scope="col">
+                <button className="play-button" type="button">
+                  <span>
+                    <img
+                      className="play-button-image"
+                      src="play-con.webp"
+                    ></img>
+                  </span>
+                </button>
+              </td>
+            </tr>
+            <tr className="song-stacked">
+              <td className="song-title">{song.title}</td>
+              <td className="artist">{song.artist}</td>
+            </tr>
           </tbody>
-        </thead>
+        </table>
       );
     }
   } else {
     songInfo.push(
-      <tr className="song-row" key={0}>
-        <td className="song-title">No saved songs</td>
-      </tr>
+      <table>
+        <tbody>
+          <tr className="song-row" key={0}>
+            <td className="song-title">No saved songs</td>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 
   return (
     <main className="main_saved">
       <h2 className="main-title">Your Saved Songs</h2>
-      <table className="saved-songs">
-        <tbody>{songInfo}</tbody>
-      </table>
+      {songInfo}
     </main>
   );
 }

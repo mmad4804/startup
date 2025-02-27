@@ -1,90 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 .main_saved {
-    flex: 1 calc(100vh - 110px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(45deg, #3cdede, #fff04a);
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #3cdede, #fff04a);
 }
 
 .main-title {
-    flex: 0 1em;
-    text-align: center;
-    padding: 1em;
-    margin: 0;
-    font-size: 2em;
-    color: whitesmoke
+  flex: 0 1em;
+  text-align: center;
+  padding: 1em;
+  margin: 0;
+  font-size: 2em;
+  color: whitesmoke;
 }
 
 .saved-songs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
 }
 
 .song {
-    min-width: 300px;
-    width: 60vw;
-    display: flex;
-    flex-direction: column;
-    background-color: whitesmoke;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    border-radius: .5em;
+  min-width: 300px;
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: center;
+  border-radius: 0.5em;
+  margin: 10px;
 }
 
 .song-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin: 0.5em;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0.5em;
 }
 
 .song-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.song-stacked {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 
 .song-title {
-    flex: 3 1em;
-    font-size: 1.6em;
-    margin: 0.25em 0em 0em;
-    text-align: start;
+  flex: 3 1em;
+  font-size: 1.6em;
+  margin: 0.25em 0em 0em;
+  text-align: start;
 }
 
 .artist {
-    flex: 2 1em;
-    padding: 0;
-    margin: 0.5em 0em 0em 0em;
-    text-align: start;
+  flex: 2 1em;
+  padding: 0;
+  margin: 0.5em 0em 0em 0em;
+  text-align: start;
 }
 
 .play-button {
-    display: flex;
-    padding: 0.5em;
-    margin: .5em;
-    border-radius: 5em;
-    background: linear-gradient(45deg, #3cdede, #fff04a);
-    color: white;
-    border: none;
-    cursor: pointer;
-    height: 2em;
-    width: 2em;
-    font-size: 2em;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 5em;
+  background: linear-gradient(45deg, #3cdede, #fff04a);
+  color: white;
+  border: none;
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+  font-size: 2em;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .play-button-image {
-    width: 60px;
+  width: 60px;
 }
-

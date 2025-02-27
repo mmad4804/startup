@@ -37,7 +37,7 @@ export function Unauthenticated(props) {
                 id="username"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label className="login-label" for="password">
                 Password
               </label>

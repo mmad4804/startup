@@ -31,8 +31,8 @@ export function Feed() {
         <thead key={i} className="feed-section">
           <tbody className="feed-table">
             <tr className="feed-row">
-              <td class="button-section">
-                <button class="play-button" type="button">
+              <td className="button-section">
+                <button className="play-button" type="button">
                   <span>
                     <img
                       className="play-button-image"
@@ -41,23 +41,23 @@ export function Feed() {
                   </span>
                 </button>
               </td>
-              <td class="song-info">
+              <td className="song-info">
                 <tbody className="feed-table">
                   <tr className="feed-row">
-                    <td class="username">{song.username}</td>
+                    <td className="username">{song.username}</td>
                   </tr>
                   <tr className="feed-row">
-                    <td class="song-title">{song.title}</td>
+                    <td className="song-title">{song.title}</td>
                   </tr>
                   <tr className="feed-row">
-                    <td class="artist">{song.artist}</td>
+                    <td className="artist">{song.artist}</td>
                   </tr>
                 </tbody>
               </td>
             </tr>
           </tbody>
           <button
-            class="saved-songs-button"
+            className="saved-songs-button"
             onClick={() => addToSavedSongs(song.title, song.artist)}
             type="button"
           >
@@ -70,7 +70,7 @@ export function Feed() {
   }
 
   function addToSavedSongs(title, artist) {
-    const song = { title: artist };
+    const song = { title: title, artist: artist };
     const savedSongs = localStorage.getItem("savedSongText");
     const songsList = savedSongs ? JSON.parse(savedSongs) : [];
     songsList.push(song);
