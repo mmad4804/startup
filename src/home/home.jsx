@@ -10,17 +10,7 @@ export function Home({ userName }) {
   const [lyrics, setLyrics] = React.useState("");
 
   async function setSongDetails(title, artist) {
-    await fetch(
-      `/api/auth/lyrics?title=${encodeURIComponent(
-        title
-      )}&artist=${encodeURIComponent(artist)}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
       .then((response) => response.json())
       .then((data) => {
         const songLyrics = data.lyrics;
