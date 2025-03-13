@@ -56,9 +56,9 @@ apiRouter.delete("/auth/logout", async (req, res) => {
 });
 
 apiRouter.get("/auth/lyrics", async (req, res) => {
-  const { songTitle, songArtist } = req.query;
+  const { title, artist } = req.query;
   try {
-    const song = await searchSong(`${songTitle} ${songArtist}`);
+    const song = await searchSong(`${title} ${artist}`);
     const lyrics = await getLyrics(song.id);
     res.send({ lyrics: lyrics });
   } catch (error) {

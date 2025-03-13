@@ -7,16 +7,40 @@ export function Home({ userName }) {
   const [songArtist, setSongArtist] = React.useState("");
   const [formEnabled, setFormEnabled] = React.useState(false);
   const [buttonEnabled, setButtonEnabled] = React.useState(true);
+  const [lyrics, setLyrics] = React.useState("");
 
   async function setSongDetails(title, artist) {
-    const song = JSON.stringify({
-      title: title,
-      artist: artist,
-      username: userName,
-    });
-    const mySong = localStorage.setItem("mySong", song);
-    setFormEnabled(false);
-    setButtonEnabled(true);
+    await fetch(
+      `/api/auth/lyrics?title=${encodeURIComponent(
+        title
+      )}&artist=${encodeURIComponent(artist)}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const songLyrics = data.lyrics;
+        setLyrics(songLyrics);
+        console.log(songLyrics);
+
+        const song = JSON.stringify({
+          title: title,
+          artist: artist,
+          username: userName,
+          lyrics: lyrics,
+        });
+
+        const mySong = localStorage.setItem("mySong", song);
+        setFormEnabled(false);
+        setButtonEnabled(true);
+      })
+      .catch((error) => {
+        console.error("Error fetching lyrics:");
+      });
   }
 
   async function clearSongDetails(title, artist) {
@@ -30,7 +54,7 @@ export function Home({ userName }) {
 
   function songOfTheDay() {
     return (
-      <form className="song-form" action="home.html" method="post">
+      <div className="song-form">
         <section className="song-section">
           <div className="song-group">
             <label className="song-label" for="song-title">
@@ -76,7 +100,8 @@ export function Home({ userName }) {
             </Button>
           </div>
         </section>
-      </form>
+        <pre>{lyrics}</pre>
+      </div>
     );
   }
 
