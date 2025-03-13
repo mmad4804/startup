@@ -18,7 +18,7 @@ export function Unauthenticated(props) {
 
   async function loginOrRegister(endpoint) {
     const response = await fetch(endpoint, {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({ username: userName, password: password }),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -37,7 +37,7 @@ export function Unauthenticated(props) {
     <>
       <div>
         <p id="login-instructions">Login or create an account to get started</p>
-        <form className="login-form" action="home.html" method="post">
+        <div className="login-form">
           <section className="login-section">
             <div className="form-group">
               <label className="login-label" for="username">
@@ -83,7 +83,7 @@ export function Unauthenticated(props) {
               </Button>
             </div>
           </section>
-        </form>
+        </div>
       </div>
 
       <MessageDialog

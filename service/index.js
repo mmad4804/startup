@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 const express = require("express");
 const uuid = require("uuid");
 const app = express();
+const getAccessToken = require("./auth");
+const axios = require("axios");
 
 const authCookieName = "token";
 
@@ -53,6 +55,17 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   res.status(204).end();
 });
 
+apiRouter.get("/auth/lyrics", async (req, res) => {
+  const { songTitle, songArtist } = req.query;
+  try {
+    const song = await searchSong(`${songTitle} ${songArtist}`);
+    const lyrics = await getLyrics(song.id);
+    res.send({ lyrics: lyrics });
+  } catch (error) {
+    res.status(500).send({ msg: "Error fetching lyrics" });
+  }
+});
+
 //Middleware to verify if a user is authenticated
 const verifyAuth = async (req, res, next) => {
   const user = await findUser("token", req.cookies[authCookieName]);
@@ -87,6 +100,31 @@ async function findUser(field, value) {
 
   return users.find((user) => user[field] === value);
 }
+
+//Searches for the song the user entered
+const searchSong = async (query) => {
+  const accessToken = await getAccessToken();
+  const response = await axios.get("https://api.genius.com/search", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    params: {
+      q: query,
+    },
+  });
+  return response.data.response.hits[0].result;
+};
+
+//Searches for the lyrics of the searched song
+const getLyrics = async (songId) => {
+  const accessToken = await getAccessToken();
+  const response = await axios.get(`https://api.genius.com/songs/${songId}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  return response.data.response.song.lyrics;
+};
 
 function setAuthCookie(res, token) {
   res.cookie(authCookieName, token, {
