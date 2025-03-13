@@ -70,6 +70,8 @@ app.use(function (err, req, res, next) {
 
 //Helper function to create a new user
 async function createUser(username, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+
   const user = {
     username: username,
     password: passwordHash,
