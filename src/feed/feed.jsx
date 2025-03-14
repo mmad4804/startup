@@ -28,6 +28,24 @@ export function Feed() {
   }, []);
 
   function handleNewSong(song) {
+    fetch(`/api/addSong`, {
+      method: "POST",
+      body: JSON.stringify(song),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Song posted successfully");
+        } else {
+          console.error("Error posting song");
+        }
+      })
+      .catch((error) => {
+        console.error("Error posting song", error);
+      });
+
     setSongs((prevSongs) => {
       let newSongs = [song, ...prevSongs];
       if (newSongs.length > 10) {
@@ -48,7 +66,8 @@ export function Feed() {
   }
 
   function createPostedSongList() {
-    const songInfo = fetch("/api/feedSongs");
+    //const songInfo = fetch("/api/feedSongs");
+    const songInfo = [];
     for (const [i, song] of events.entries()) {
       fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
         .then((response) => response.json())

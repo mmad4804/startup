@@ -11,8 +11,8 @@ export function Home({ userName }) {
 
   React.useEffect(() => {}, []);
 
-  function setSongDetails(title, artist) {
-    fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
+  async function setSongDetails(title, artist) {
+    await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
       .then((response) => response.json())
       .then((data) => {
         setLyrics(data.lyrics);

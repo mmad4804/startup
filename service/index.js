@@ -64,11 +64,11 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get("/feedSongs", verifyAuth, (req, res) => {
+apiRouter.get("/retrieveSongs", verifyAuth, (req, res) => {
   res.send(feedSongs);
 });
 
-apiRouter.post("/feedSongs", verifyAuth, (req, res) => {
+apiRouter.post("/addSong", verifyAuth, (req, res) => {
   songs = updateSongs(req.body);
   res.send(songs);
 });
@@ -92,9 +92,8 @@ async function createUser(username, password) {
 }
 
 function updateSongs(newSong) {
-  for (const [i, song] of feedSongs.entries()) {
-    feedSongs.splice(i, 1);
-  }
+  feedSongs.push(newSong);
+  return feedSongs;
 }
 
 //Helper function to find a user by a property
