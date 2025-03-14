@@ -7,7 +7,8 @@ const app = express();
 const authCookieName = "token";
 
 const users = [];
-// const savedSongs?
+const feedSongs = [];
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());
@@ -53,17 +54,6 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   res.status(204).end();
 });
 
-apiRouter.get("/auth/lyrics", async (req, res) => {
-  const { title, artist } = req.query;
-  try {
-    const song = await searchSong(`${title} ${artist}`);
-    const lyrics = await getLyrics(song.id);
-    res.send({ lyrics: lyrics });
-  } catch (error) {
-    res.status(500).send({ msg: "Error fetching lyrics" });
-  }
-});
-
 //Middleware to verify if a user is authenticated
 const verifyAuth = async (req, res, next) => {
   const user = await findUser("token", req.cookies[authCookieName]);
@@ -73,6 +63,15 @@ const verifyAuth = async (req, res, next) => {
     res.status(401).send({ msg: "Unauthorized" });
   }
 };
+
+apiRouter.get("/feedSongs", verifyAuth, (req, res) => {
+  res.send(feedSongs);
+});
+
+apiRouter.post("/feedSongs", verifyAuth, (req, res) => {
+  songs = updateSongs(req.body);
+  res.send(songs);
+});
 
 //Default error handler
 app.use(function (err, req, res, next) {
@@ -90,6 +89,12 @@ async function createUser(username, password) {
   };
   users.push(user);
   return user;
+}
+
+function updateSongs(newSong) {
+  for (const [i, song] of feedSongs.entries()) {
+    feedSongs.splice(i, 1);
+  }
 }
 
 //Helper function to find a user by a property

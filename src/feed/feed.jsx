@@ -2,23 +2,11 @@ import React from "react";
 
 import { songNotifier } from "./song";
 import "./feed.css";
-import { useRef } from "react";
+import { MessageDialog } from "../login/messageDialog";
 
 export function Feed() {
   const [events, setSongs] = React.useState([]);
-  const audioRef = useRef("");
-  const [isPlaying, setIsPlaying] = React.useState(false);
-
-  const handlePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  const [lyrics, setLyrics] = React.useState("");
 
   React.useEffect(() => {
     songNotifier.addHandler(handleNewSong);
@@ -29,7 +17,8 @@ export function Feed() {
       songNotifier.postSong(
         currentSong.title,
         currentSong.artist,
-        currentSong.username
+        currentSong.username,
+        currentSong.lyrics
       );
     }
 
@@ -48,9 +37,29 @@ export function Feed() {
     });
   }
 
+  function displayLyrics(lyrics) {
+    return () => {
+      MessageDialog({
+        title: "Lyrics",
+        message: lyrics,
+        onClose: () => {},
+      });
+    };
+  }
+
   function createPostedSongList() {
-    const songInfo = [];
+    const songInfo = fetch("/api/feedSongs");
     for (const [i, song] of events.entries()) {
+      fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setLyrics(data.lyrics);
+        })
+        .catch((error) => {
+          console.error("Error fetching lyrics");
+          setLyrics("No lyrics available");
+        });
+
       songInfo.push(
         <table className="feed-section" key={i}>
           <tbody className="feed-body">
@@ -58,21 +67,11 @@ export function Feed() {
               <td rowSpan="4" className="button-section">
                 <button
                   className="play-button"
-                  onClick={handlePlay}
+                  onClick={displayLyrics(song.lyrics)}
                   type="button"
                 >
-                  <span>
-                    <img
-                      className="play-button-image"
-                      src="play-con.webp"
-                    ></img>
-                  </span>
+                  Lyrics
                 </button>
-                <audio
-                  ref={audioRef}
-                  className="test-audio"
-                  src="chill-audio.mp3"
-                ></audio>
               </td>
             </tr>
             <tr className="feed-row">
@@ -88,7 +87,9 @@ export function Feed() {
               <td className="feed-song-button">
                 <button
                   className="saved-songs-button"
-                  onClick={() => addToSavedSongs(song.title, song.artist)}
+                  onClick={() =>
+                    addToSavedSongs(song.title, song.artist, song.lyrics)
+                  }
                   type="button"
                 >
                   Add to Saved Songs
@@ -102,8 +103,8 @@ export function Feed() {
     return songInfo;
   }
 
-  function addToSavedSongs(title, artist) {
-    const song = { title: title, artist: artist };
+  function addToSavedSongs(title, artist, lyrics) {
+    const song = { title: title, artist: artist, lyrics: lyrics };
     const savedSongs = localStorage.getItem("savedSongText");
     const songsList = savedSongs ? JSON.parse(savedSongs) : [];
     songsList.push(song);

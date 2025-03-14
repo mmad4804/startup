@@ -9,27 +9,30 @@ export function Home({ userName }) {
   const [buttonEnabled, setButtonEnabled] = React.useState(true);
   const [lyrics, setLyrics] = React.useState("");
 
-  async function setSongDetails(title, artist) {
-    await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
+  React.useEffect(() => {}, []);
+
+  function setSongDetails(title, artist) {
+    fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
       .then((response) => response.json())
       .then((data) => {
-        const songLyrics = data.lyrics;
-        setLyrics(songLyrics);
-        console.log(songLyrics);
+        setLyrics(data.lyrics);
 
         const song = JSON.stringify({
           title: title,
           artist: artist,
           username: userName,
-          lyrics: lyrics,
+          lyrics: data.lyrics,
         });
 
-        const mySong = localStorage.setItem("mySong", song);
-        setFormEnabled(false);
-        setButtonEnabled(true);
+        localStorage.setItem("mySong", song);
       })
       .catch((error) => {
-        console.error("Error fetching lyrics:");
+        console.error("Error fetching lyrics");
+        setLyrics("No lyrics available");
+      })
+      .finally(() => {
+        setFormEnabled(false);
+        setButtonEnabled(true);
       });
   }
 
@@ -90,7 +93,6 @@ export function Home({ userName }) {
             </Button>
           </div>
         </section>
-        <pre>{lyrics}</pre>
       </div>
     );
   }
