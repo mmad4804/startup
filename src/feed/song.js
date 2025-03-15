@@ -32,12 +32,13 @@ class SongNotifier {
       const title = song.title;
       const artist = song.artist;
       const username = "JohnnyLingo674";
-      this.postSong(title, artist, username);
+      const lyrics = "Placeholder: No lyrics available";
+      this.postSong(title, artist, username, lyrics);
     }, 5000);
   }
 
-  postSong(title, artist, username) {
-    const songEvent = { title, artist, username };
+  postSong(title, artist, username, lyrics) {
+    const songEvent = { title, artist, username, lyrics };
     this.events.push(songEvent);
 
     this.handlers.forEach((handler) => handler(songEvent));

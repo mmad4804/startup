@@ -66,7 +66,7 @@ export function Feed() {
               <td rowSpan="4" className="button-section">
                 <button
                   className="play-button"
-                  onClick={() => displayLyrics(lyrics)}
+                  onClick={() => displayLyrics(song.lyrics)}
                   type="button"
                 >
                   Lyrics
