@@ -1,22 +1,10 @@
 import React from "react";
 import "./saved.css";
-import { useRef } from "react";
+import { MessageDialog } from "../login/messageDialog";
 
 export function Saved() {
   const [savedSongs, setSavedSongs] = React.useState([]);
-  const audioRef = useRef("");
-  const [isPlaying, setIsPlaying] = React.useState(false);
-
-  const handlePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  const [lyrics, setLyrics] = React.useState("");
 
   //Make sure spotify web api gives json song data
   React.useEffect(() => {
@@ -25,6 +13,14 @@ export function Saved() {
       setSavedSongs(JSON.parse(savedSongText));
     }
   }, []);
+
+  function displayLyrics(lyrics) {
+    if (!lyrics) {
+      setLyrics("No lyrics available");
+      return;
+    }
+    setLyrics(lyrics);
+  }
 
   const songInfo = [];
   if (savedSongs.length) {
@@ -39,21 +35,11 @@ export function Saved() {
               <td scope="col">
                 <button
                   className="play-button"
-                  onClick={handlePlay}
+                  onClick={() => displayLyrics(song.lyrics)}
                   type="button"
                 >
-                  <span>
-                    <img
-                      className="play-button-image"
-                      src="play-con.webp"
-                    ></img>
-                  </span>
+                  Lyrics
                 </button>
-                <audio
-                  ref={audioRef}
-                  className="test-audio"
-                  src="chill-audio.mp3"
-                ></audio>
               </td>
             </tr>
             <tr className="song-stacked">
@@ -80,6 +66,12 @@ export function Saved() {
     <main className="main_saved">
       <h2 className="main-title">Your Saved Songs</h2>
       {songInfo}
+
+      <MessageDialog
+        message={lyrics}
+        onHide={() => setLyrics("")}
+        title="Lyrics"
+      />
     </main>
   );
 }
