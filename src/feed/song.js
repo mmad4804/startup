@@ -5,7 +5,7 @@ const myFavoriteSongs = [
   },
   {
     title: "Stargazing",
-    artist: "Miles Smyth",
+    artist: "Myles Smith",
   },
   {
     title: "Too Sweet",
@@ -13,7 +13,7 @@ const myFavoriteSongs = [
   },
   {
     title: "Home",
-    artist: "Good Neighbors",
+    artist: "Good Neighbours",
   },
   {
     title: "As It Was",
