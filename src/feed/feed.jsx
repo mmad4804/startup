@@ -5,10 +5,16 @@ import "./feed.css";
 import { MessageDialog } from "../login/messageDialog";
 
 export function Feed() {
-  const [events, setSongs] = React.useState([]);
+  const [feedSongs, setSongs] = React.useState([]);
   const [lyrics, setLyrics] = React.useState("");
 
   React.useEffect(() => {
+    fetch("/api/retrieveSongs")
+      .then((response) => response.json())
+      .then((data) => {
+        setSongs(data);
+      });
+
     songNotifier.addHandler(handleNewSong);
 
     const mySong = localStorage.getItem("mySong");
@@ -20,6 +26,14 @@ export function Feed() {
         currentSong.username,
         currentSong.lyrics
       );
+
+      // fetch("api/addSong", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(currentSong),
+      // });
     }
 
     return () => {
@@ -28,13 +42,39 @@ export function Feed() {
   }, []);
 
   function handleNewSong(song) {
-    setSongs((prevSongs) => {
-      let newSongs = [song, ...prevSongs];
-      if (newSongs.length > 10) {
-        newSongs = newSongs.slice(0, 10);
-      }
-      return newSongs;
-    });
+    let lyrics = "temp";
+    fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
+      .then((response) => response.json())
+      .then((data) => {
+        lyrics = data.lyrics;
+
+        const updatedSong = {
+          title: song.title,
+          artist: song.artist,
+          username: song.username,
+          lyrics: lyrics,
+        };
+
+        setSongs((prevSongs) => {
+          let newSongs = [updatedSong, ...prevSongs];
+          if (newSongs.length > 10) {
+            newSongs = newSongs.slice(0, 10);
+          }
+          fetch("api/updateList", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newSongs),
+          });
+          return newSongs;
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching lyrics");
+        lyrics = "No lyrics available";
+        return feedSongs;
+      });
   }
 
   function displayLyrics(lyrics) {
@@ -46,19 +86,8 @@ export function Feed() {
   }
 
   function createPostedSongList() {
-    //const songInfo = fetch("/api/feedSongs");
     const songInfo = [];
-    for (const [i, song] of events.entries()) {
-      // fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     setLyrics(data.lyrics);
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error fetching lyrics");
-      //     setLyrics("No lyrics available");
-      //   });
-
+    for (const [i, song] of feedSongs.entries()) {
       songInfo.push(
         <table className="feed-section" key={i}>
           <tbody className="feed-body">

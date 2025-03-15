@@ -7,7 +7,7 @@ const app = express();
 const authCookieName = "token";
 
 const users = [];
-const feedSongs = [];
+let feedSongs = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -71,6 +71,11 @@ apiRouter.get("/retrieveSongs", verifyAuth, (req, res) => {
 apiRouter.post("/addSong", verifyAuth, (req, res) => {
   songs = updateSongs(req.body);
   res.send(songs);
+});
+
+apiRouter.post("/updateList", verifyAuth, (req, res) => {
+  feedSongs = req.body;
+  res.send(feedSongs);
 });
 
 //Default error handler

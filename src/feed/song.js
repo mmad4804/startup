@@ -22,7 +22,7 @@ const myFavoriteSongs = [
 ];
 
 class SongNotifier {
-  events = [];
+  songs = [];
   handlers = [];
 
   constructor() {
@@ -39,7 +39,7 @@ class SongNotifier {
 
   postSong(title, artist, username, lyrics) {
     const songEvent = { title, artist, username, lyrics };
-    this.events.push(songEvent);
+    this.songs.push(songEvent);
 
     this.handlers.forEach((handler) => handler(songEvent));
   }
