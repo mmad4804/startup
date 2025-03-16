@@ -6,16 +6,7 @@ export function Saved() {
   const [savedSongs, setSavedSongs] = React.useState([]);
   const [lyrics, setLyrics] = React.useState("");
 
-  //Make sure spotify web api gives json song data
   React.useEffect(() => {
-    // fetch("/api/retrieveSongs")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setSavedSongs(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching saved songs");
-    //   });
     const savedSongText = localStorage.getItem("savedSongText");
     if (savedSongText) {
       setSavedSongs(JSON.parse(savedSongText));

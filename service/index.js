@@ -83,6 +83,11 @@ app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
 });
 
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+  res.sendFile("index.html", { root: "public" });
+});
+
 //Helper function to create a new user
 async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
