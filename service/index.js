@@ -97,7 +97,10 @@ async function createUser(username, password) {
 }
 
 function updateSongs(newSong) {
-  feedSongs.push(newSong);
+  // feedSongs.unshift(newSong);
+  let newSongs = [newSong, ...feedSongs];
+  feedSongs = newSongs;
+  //feedSongs.push(newSong);
   return feedSongs;
 }
 

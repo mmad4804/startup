@@ -9,32 +9,17 @@ export function Feed() {
   const [lyrics, setLyrics] = React.useState("");
 
   React.useEffect(() => {
+    songNotifier.addHandler(handleNewSong);
+
     fetch("/api/retrieveSongs")
       .then((response) => response.json())
       .then((data) => {
         setSongs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching feed songs");
+        setSongs([]);
       });
-
-    songNotifier.addHandler(handleNewSong);
-
-    const mySong = localStorage.getItem("mySong");
-    if (mySong) {
-      const currentSong = JSON.parse(mySong);
-      songNotifier.postSong(
-        currentSong.title,
-        currentSong.artist,
-        currentSong.username,
-        currentSong.lyrics
-      );
-
-      // fetch("api/addSong", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(currentSong),
-      // });
-    }
 
     return () => {
       songNotifier.removeHandler(handleNewSong);

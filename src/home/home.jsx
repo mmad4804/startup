@@ -24,7 +24,15 @@ export function Home({ userName }) {
           lyrics: data.lyrics,
         });
 
-        localStorage.setItem("mySong", song);
+        fetch("/api/addSong", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: song,
+        }).catch((error) => {
+          console.error("Error adding song");
+        });
       })
       .catch((error) => {
         console.error("Error fetching lyrics");
