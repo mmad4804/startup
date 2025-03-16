@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-This web application lets users connect with their Spotify accounts to pull their favorite songs for sharing with other users. Users can post, view/listen to others posts in realtime, and save liked songs to their own list.
+This web application lets users share their favorite songs with other users. Users can post, view lyrics and others' posts in realtime, and save liked songs to their own list.
 
 ## 🚀 Specification Deliverable
 
@@ -26,9 +26,9 @@ The application features 4 main screens with which users can login, post songs, 
 
 ### Key features
 
-- Sync your Spotify account data
 - Look up and post any of your favorite songs
 - Discover in realtime what others have posted on the global feed
+- View the lyrics of posted songs
 - Easily add songs you like to your saved list
 - Songs in your list are persistently saved for every time you come back
 - Secure login over HTTPS
@@ -98,11 +98,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I used both in my index.js service file.
+- [x] **Static middleware for frontend** - Also implemented in my index.js file.
+- [x] **Calls to third party endpoints** - Made calls in feed.jsx and home.jsx to a third party endpoint that retrieves the lyrics of a given song.
+- [x] **Backend service endpoints** - Created enpoints for logging in, logging out, registering users, retrieving the list of songs, and updating/adding to the list of songs.
+- [x] **Frontend calls service endpoints** - Using fetch, I called my backend service endpoints from login.jsx, feed.jsx, and home.jsx.
 
 ## 🚀 DB/Login deliverable
 
