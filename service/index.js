@@ -3,11 +3,9 @@ const bcrypt = require("bcryptjs");
 const express = require("express");
 const uuid = require("uuid");
 const app = express();
+const DB = require("./database.js");
 
 const authCookieName = "token";
-
-const users = [];
-let feedSongs = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -36,6 +34,7 @@ apiRouter.post("/auth/login", async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ username: user.username });
       return;
@@ -49,6 +48,7 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   const user = await findUser("token", req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -64,15 +64,17 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get("/retrieveSongs", verifyAuth, (req, res) => {
+apiRouter.get("/retrieveSongs", verifyAuth, async (req, res) => {
+  const feedSongs = await DB.getSongs();
   res.send(feedSongs);
 });
 
-apiRouter.post("/addSong", verifyAuth, (req, res) => {
-  songs = updateSongs(req.body);
-  res.send(songs);
+apiRouter.post("/addSong", verifyAuth, async (req, res) => {
+  const feedSongs = updateSongs(req.body);
+  res.send(feedSongs);
 });
 
+//****************Will probably want to change this! */
 apiRouter.post("/updateList", verifyAuth, (req, res) => {
   feedSongs = req.body;
   res.send(feedSongs);
@@ -97,23 +99,27 @@ async function createUser(username, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
   return user;
 }
 
-function updateSongs(newSong) {
-  // feedSongs.unshift(newSong);
-  let newSongs = [newSong, ...feedSongs];
-  feedSongs = newSongs;
-  //feedSongs.push(newSong);
-  return feedSongs;
+//************Need to make sure new song is at list beginning */
+async function updateSongs(newSong) {
+  await DB.addSong(newSong);
+  //let newSongs = [newSong, ...feedSongs];
+  //feedSongs = newSongs;
+  //return feedSongs;
+  return DB.getSongs();
 }
 
 //Helper function to find a user by a property
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((user) => user[field] === value);
+  if (field === "token") {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 function setAuthCookie(res, token) {
@@ -124,6 +130,6 @@ function setAuthCookie(res, token) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
