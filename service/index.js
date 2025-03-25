@@ -75,9 +75,9 @@ apiRouter.post("/addSong", verifyAuth, async (req, res) => {
 });
 
 //****************Will probably want to change this! */
-apiRouter.post("/updateList", verifyAuth, (req, res) => {
-  feedSongs = req.body;
-  res.send(feedSongs);
+apiRouter.post("/updateList", verifyAuth, async (req, res) => {
+  const updatedSongs = await DB.resetSongList(req.body);
+  res.send(updatedSongs);
 });
 
 //Default error handler

@@ -43,6 +43,17 @@ async function getSongs() {
   return await songCollection.find().toArray();
 }
 
+async function resetSongList(songs) {
+  try {
+    await songCollection.deleteMany({});
+    await songCollection.insertMany(songs);
+    return await getSongs();
+  } catch (error) {
+    console.error("Error resetting song list:", error);
+    throw error;
+  }
+}
+
 module.exports = {
   getUser,
   getUserByToken,
