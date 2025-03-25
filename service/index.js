@@ -16,6 +16,8 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use("/api", apiRouter);
 
+let feedSongs = [];
+
 //CreateAuth a new user
 apiRouter.post("/auth/register", async (req, res) => {
   if (await findUser("username", req.body.username)) {
@@ -65,19 +67,22 @@ const verifyAuth = async (req, res, next) => {
 };
 
 apiRouter.get("/retrieveSongs", verifyAuth, async (req, res) => {
-  const feedSongs = await DB.getSongs();
+  //const feedSongs = await DB.getSongs();
   res.send(feedSongs);
 });
 
-apiRouter.post("/addSong", verifyAuth, async (req, res) => {
-  const feedSongs = updateSongs(req.body);
+apiRouter.post("/addSong", verifyAuth, (req, res) => {
+  //const feedSongs = updateSongs(req.body);
+  feedSongs.push(req.body); // Add the new song to the feedSongs array
   res.send(feedSongs);
 });
 
 //****************Will probably want to change this! */
 apiRouter.post("/updateList", verifyAuth, async (req, res) => {
-  const updatedSongs = await DB.resetSongList(req.body);
-  res.send(updatedSongs);
+  //await DB.resetSongList(req.body);
+  //const updatedSongs = await DB.getSongs();
+  feedSongs = req.body;
+  res.send(feedSongs);
 });
 
 //Default error handler
@@ -105,11 +110,11 @@ async function createUser(username, password) {
 
 //************Need to make sure new song is at list beginning */
 async function updateSongs(newSong) {
-  await DB.addSong(newSong);
-  //let newSongs = [newSong, ...feedSongs];
-  //feedSongs = newSongs;
-  //return feedSongs;
-  return DB.getSongs();
+  //await DB.addSong(newSong);
+  let newSongs = [newSong, ...feedSongs];
+  feedSongs = newSongs;
+  return feedSongs;
+  //return DB.getSongs();
 }
 
 //Helper function to find a user by a property

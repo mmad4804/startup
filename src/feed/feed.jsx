@@ -26,9 +26,9 @@ export function Feed() {
     };
   }, []);
 
-  function handleNewSong(song) {
+  async function handleNewSong(song) {
     let lyrics = "temp";
-    fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
+    await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
       .then((response) => response.json())
       .then((data) => {
         lyrics = data.lyrics;
@@ -72,7 +72,9 @@ export function Feed() {
 
   function createPostedSongList() {
     const songInfo = [];
+    //for (let i = feedSongs.length - 1; i >= 0; i--) {
     for (const [i, song] of feedSongs.entries()) {
+      //const song = feedSongs[i];
       songInfo.push(
         <table className="feed-section" key={i}>
           <tbody className="feed-body">
