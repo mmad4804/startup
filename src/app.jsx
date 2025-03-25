@@ -72,7 +72,7 @@ function App() {
             exact
           />
           <Route path="/home" element={<Home userName={userName} />} />
-          <Route path="/feed" element={<Feed />} />
+          <Route path="/feed" element={<Feed userName={userName} />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -72,9 +72,24 @@ apiRouter.get("/retrieveSongs", verifyAuth, async (req, res) => {
 });
 
 apiRouter.post("/addSong", verifyAuth, (req, res) => {
-  //const feedSongs = updateSongs(req.body);
-  feedSongs.push(req.body); // Add the new song to the feedSongs array
+  const feedSongs = updateSongs(req.body);
+  //feedSongs.push(req.body); // Add the new song to the feedSongs array
   res.send(feedSongs);
+});
+
+apiRouter.post("/saveSong", verifyAuth, async (req, res) => {
+  const savedSongs = updateSavedSongs(req.body); // Save the song to the database
+  res.send(savedSongs); // Return the updated saved songs for the user
+});
+
+apiRouter.get("/getSavedSongs", verifyAuth, async (req, res) => {
+  const user = await findUser("token", req.cookies[authCookieName]);
+  if (user) {
+    const savedSongs = await DB.getSavedSongs(user.username);
+    res.send(savedSongs);
+  } else {
+    res.status(401).send({ msg: "Unauthorized" });
+  }
 });
 
 //****************Will probably want to change this! */
@@ -115,6 +130,12 @@ async function updateSongs(newSong) {
   feedSongs = newSongs;
   return feedSongs;
   //return DB.getSongs();
+}
+
+async function updateSavedSongs(newSong) {
+  await DB.saveSong(newSong);
+  const savedSongs = await DB.getSavedSongs(newSong.username);
+  return savedSongs;
 }
 
 //Helper function to find a user by a property

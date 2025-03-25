@@ -4,7 +4,7 @@ import { songNotifier } from "./song";
 import "./feed.css";
 import { MessageDialog } from "../login/messageDialog";
 
-export function Feed() {
+export function Feed({ userName }) {
   const [feedSongs, setSongs] = React.useState([]);
   const [lyrics, setLyrics] = React.useState("");
 
@@ -103,7 +103,12 @@ export function Feed() {
                 <button
                   className="saved-songs-button"
                   onClick={() =>
-                    addToSavedSongs(song.title, song.artist, song.lyrics)
+                    addToSavedSongs(
+                      song.title,
+                      song.artist,
+                      song.lyrics,
+                      userName
+                    )
                   }
                   type="button"
                 >
@@ -118,12 +123,28 @@ export function Feed() {
     return songInfo;
   }
 
-  function addToSavedSongs(title, artist, lyrics) {
-    const song = { title: title, artist: artist, lyrics: lyrics };
-    const savedSongs = localStorage.getItem("savedSongText");
-    const songsList = savedSongs ? JSON.parse(savedSongs) : [];
-    songsList.push(song);
-    localStorage.setItem("savedSongText", JSON.stringify(songsList));
+  async function addToSavedSongs(title, artist, lyrics, username) {
+    const song = JSON.stringify({
+      title: title,
+      artist: artist,
+      lyrics: lyrics,
+      username: username,
+    });
+
+    await fetch("/api/saveSong", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: song,
+    }).catch((error) => {
+      console.error("Error saving song");
+    });
+
+    //const savedSongs = localStorage.getItem("savedSongText");
+    //const songsList = savedSongs ? JSON.parse(savedSongs) : [];
+    //songsList.push(song);
+    //localStorage.setItem("savedSongText", JSON.stringify(songsList));
   }
 
   return (

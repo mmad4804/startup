@@ -7,10 +7,20 @@ export function Saved() {
   const [lyrics, setLyrics] = React.useState("");
 
   React.useEffect(() => {
-    const savedSongText = localStorage.getItem("savedSongText");
-    if (savedSongText) {
-      setSavedSongs(JSON.parse(savedSongText));
-    }
+    fetch("/api/getSavedSongs")
+      .then((response) => response.json())
+      .then((data) => {
+        setSavedSongs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching saved songs");
+        setSavedSongs([]);
+      });
+
+    // const savedSongText = localStorage.getItem("savedSongText");
+    // if (savedSongText) {
+    //   setSavedSongs(JSON.parse(savedSongText));
+    // }
   }, []);
 
   function displayLyrics(lyrics) {

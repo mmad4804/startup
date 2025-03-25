@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db("tuneshare-startup");
 const userCollection = db.collection("users");
 const songCollection = db.collection("songs");
+const savedCollection = db.collection("saved");
 
 (async function testConnection() {
   try {
@@ -35,6 +36,14 @@ async function updateUser(user) {
   await userCollection.updateOne({ username: user.username }, { $set: user });
 }
 
+async function saveSong(song) {
+  await savedCollection.insertOne(song);
+}
+
+async function getSavedSongs(username) {
+  return await savedCollection.find({ username: username }).toArray();
+}
+
 async function addSong(song) {
   await songCollection.insertOne(song);
 }
@@ -52,7 +61,6 @@ async function resetSongList(songs) {
     });
   } catch (error) {
     console.error("Error resetting song list:", error);
-    throw error;
   }
 }
 
@@ -63,4 +71,7 @@ module.exports = {
   updateUser,
   addSong,
   getSongs,
+  saveSong,
+  getSavedSongs,
+  resetSongList,
 };
