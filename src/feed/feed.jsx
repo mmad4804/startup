@@ -140,11 +140,6 @@ export function Feed({ userName }) {
     }).catch((error) => {
       console.error("Error saving song");
     });
-
-    //const savedSongs = localStorage.getItem("savedSongText");
-    //const songsList = savedSongs ? JSON.parse(savedSongs) : [];
-    //songsList.push(song);
-    //localStorage.setItem("savedSongText", JSON.stringify(songsList));
   }
 
   return (

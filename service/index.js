@@ -16,7 +16,7 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use("/api", apiRouter);
 
-let feedSongs = [];
+//let feedSongs = [];
 
 //CreateAuth a new user
 apiRouter.post("/auth/register", async (req, res) => {
@@ -67,7 +67,7 @@ const verifyAuth = async (req, res, next) => {
 };
 
 apiRouter.get("/retrieveSongs", verifyAuth, async (req, res) => {
-  //const feedSongs = await DB.getSongs();
+  const feedSongs = await DB.getSongs();
   res.send(feedSongs);
 });
 
@@ -94,9 +94,9 @@ apiRouter.get("/getSavedSongs", verifyAuth, async (req, res) => {
 
 //****************Will probably want to change this! */
 apiRouter.post("/updateList", verifyAuth, async (req, res) => {
-  //await DB.resetSongList(req.body);
-  //const updatedSongs = await DB.getSongs();
-  feedSongs = req.body;
+  await DB.resetSongList(req.body);
+  const feedSongs = await DB.getSongs();
+  //feedSongs = req.body;
   res.send(feedSongs);
 });
 
@@ -125,11 +125,11 @@ async function createUser(username, password) {
 
 //************Need to make sure new song is at list beginning */
 async function updateSongs(newSong) {
-  //await DB.addSong(newSong);
-  let newSongs = [newSong, ...feedSongs];
-  feedSongs = newSongs;
-  return feedSongs;
-  //return DB.getSongs();
+  await DB.addSong(newSong);
+  //let newSongs = [newSong, ...feedSongs];
+  //feedSongs = newSongs;
+  //return feedSongs;
+  return DB.getSongs();
 }
 
 async function updateSavedSongs(newSong) {

@@ -16,11 +16,6 @@ export function Saved() {
         console.error("Error fetching saved songs");
         setSavedSongs([]);
       });
-
-    // const savedSongText = localStorage.getItem("savedSongText");
-    // if (savedSongText) {
-    //   setSavedSongs(JSON.parse(savedSongText));
-    // }
   }, []);
 
   function displayLyrics(lyrics) {
@@ -33,7 +28,8 @@ export function Saved() {
 
   const songInfo = [];
   if (savedSongs.length) {
-    for (const [i, song] of savedSongs.entries()) {
+    for (let i = savedSongs.length - 1; i >= 0; i--) {
+      const song = savedSongs[i];
       songInfo.push(
         <table className="saved-songs" key={i}>
           <colgroup className="song">

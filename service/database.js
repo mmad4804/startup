@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const config = require("./dbconfig.json");
+const config = require("./dbConfig.json");
 
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
@@ -55,7 +55,6 @@ async function getSongs() {
 async function resetSongList(songs) {
   try {
     await songCollection.deleteMany({});
-    //await songCollection.insertMany(songs);
     await songs.forEach((song) => {
       songCollection.insertOne(song); // Ensure each song is inserted
     });
