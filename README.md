@@ -108,11 +108,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+- [x] **User registration** - Made an endpoint that checks if user is in database already, if not, creates them as a new user.
+- [x] **User login and logout** - Retrieves and updates the current user info as they login and logout.
+- [x] **Stores data in MongoDB** - The database stores the list of users, as well as the songs that users have saved.
+- [x] **Stores credentials in MongoDB** - Stores the user's credentials in the database.
+- [x] **Restricts functionality based on authentication** - Users will not be able to post songs/access other pages if they haven't logged in.
 
 ## 🚀 WebSocket deliverable
 
