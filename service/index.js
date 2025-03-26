@@ -16,8 +16,6 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use("/api", apiRouter);
 
-//let feedSongs = [];
-
 //CreateAuth a new user
 apiRouter.post("/auth/register", async (req, res) => {
   if (await findUser("username", req.body.username)) {

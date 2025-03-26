@@ -41,9 +41,12 @@ export function Feed({ userName }) {
         };
 
         setSongs((prevSongs) => {
-          let newSongs = [updatedSong, ...prevSongs];
+          let newSongs = [...prevSongs, updatedSong];
           if (newSongs.length > 10) {
-            newSongs = newSongs.slice(0, 10);
+            newSongs = newSongs.slice(
+              newSongs.length - 11,
+              newSongs.length - 1
+            ); // Keep only the latest 10 songs
           }
           fetch("api/updateList", {
             method: "POST",
@@ -72,9 +75,9 @@ export function Feed({ userName }) {
 
   function createPostedSongList() {
     const songInfo = [];
-    //for (let i = feedSongs.length - 1; i >= 0; i--) {
-    for (const [i, song] of feedSongs.entries()) {
-      //const song = feedSongs[i];
+    for (let i = feedSongs.length - 1; i >= 0; i--) {
+      //for (const [i, song] of feedSongs.entries()) {
+      const song = feedSongs[i];
       songInfo.push(
         <table className="feed-section" key={i}>
           <tbody className="feed-body">
