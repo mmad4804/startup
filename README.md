@@ -110,7 +110,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **User registration** - Made an endpoint that checks if user is in database already, if not, creates them as a new user.
 - [x] **User login and logout** - Retrieves and updates the current user info as they login and logout.
-- [x] **Stores data in MongoDB** - The database stores the list of users, as well as the songs that users have saved.
+- [x] **Stores data in MongoDB** - The database stores the list of users, as well as the songs that users have saved. There is still one array stored on the server for my feed.jsx page because it is a placeholder for websocket functionality and won't actually need to be stored on the database.
 - [x] **Stores credentials in MongoDB** - Stores the user's credentials in the database.
 - [x] **Restricts functionality based on authentication** - Users will not be able to post songs/access other pages if they haven't logged in.
 
