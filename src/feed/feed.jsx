@@ -48,14 +48,15 @@ export function Feed({ userName }) {
               newSongs.length - 1
             ); // Keep only the latest 10 songs
           }
-          fetch("api/updateList", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newSongs),
-          });
           return newSongs;
+        });
+
+        fetch("api/updateList", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(feedSongs),
         });
       })
       .catch((error) => {
