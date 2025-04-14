@@ -40,12 +40,15 @@ class SongNotifier {
     this.socket = new WebSocket(
       `${protocol}://${window.location.hostname}:${port}/ws`
     );
+
     this.socket.onopen = (event) => {
       this.postSong(event.title, event.artist, event.username, event.lyrics);
     };
+
     this.socket.onclose = (event) => {
       //this.postSong()
     };
+
     this.socket.onmessage = async (msg) => {
       try {
         const event = JSON.parse(await msg.data.text());

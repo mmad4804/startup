@@ -152,6 +152,7 @@ function setAuthCookie(res, token) {
     secure: true,
     httpOnly: true,
     sameSite: "strict",
+    maxAge: 11111111111111,
   });
 }
 
