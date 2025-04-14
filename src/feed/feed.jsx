@@ -27,43 +27,50 @@ export function Feed({ userName }) {
   }); //removed dependency []
 
   async function handleNewSong(song) {
-    let lyrics = "temp";
-    await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
-      .then((response) => response.json())
-      .then((data) => {
-        lyrics = data.lyrics;
+    setSongs((prevSongs) => {
+      let newSongs = [...prevSongs, song];
+      if (newSongs.length > 10) {
+        newSongs = newSongs.slice(newSongs.length - 11, newSongs.length - 1); // Keep only the latest 10 songs
+      }
+      return newSongs;
+    });
+    // let lyrics = "temp";
+    // await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     lyrics = data.lyrics;
 
-        const updatedSong = {
-          title: song.title,
-          artist: song.artist,
-          username: song.username,
-          lyrics: lyrics,
-        };
+    //     const updatedSong = {
+    //       title: song.title,
+    //       artist: song.artist,
+    //       username: song.username,
+    //       lyrics: lyrics,
+    //     };
 
-        setSongs((prevSongs) => {
-          let newSongs = [...prevSongs, updatedSong];
-          if (newSongs.length > 10) {
-            newSongs = newSongs.slice(
-              newSongs.length - 11,
-              newSongs.length - 1
-            ); // Keep only the latest 10 songs
-          }
-          return newSongs;
-        });
+    //     setSongs((prevSongs) => {
+    //       let newSongs = [...prevSongs, updatedSong];
+    //       if (newSongs.length > 10) {
+    //         newSongs = newSongs.slice(
+    //           newSongs.length - 11,
+    //           newSongs.length - 1
+    //         ); // Keep only the latest 10 songs
+    //       }
+    //       return newSongs;
+    //     });
 
-        // fetch("api/updateList", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(feedSongs),
-        // });
-      })
-      .catch((error) => {
-        console.error("Error fetching lyrics");
-        lyrics = "No lyrics available";
-        return feedSongs;
-      });
+    //     // fetch("api/updateList", {
+    //     //   method: "POST",
+    //     //   headers: {
+    //     //     "Content-Type": "application/json",
+    //     //   },
+    //     //   body: JSON.stringify(feedSongs),
+    //     // });
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching lyrics");
+    //     setLyrics("No lyrics available");
+    //     return feedSongs;
+    //   });
   }
 
   function displayLyrics(lyrics) {

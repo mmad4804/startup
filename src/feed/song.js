@@ -42,7 +42,8 @@ class SongNotifier {
     );
 
     this.socket.onopen = (event) => {
-      this.postSong(event.title, event.artist, event.username, event.lyrics);
+      this.receiveSong(event);
+      //this.postSong(event.title, event.artist, event.username, event.lyrics);
     };
 
     this.socket.onclose = (event) => {
@@ -52,17 +53,25 @@ class SongNotifier {
     this.socket.onmessage = async (msg) => {
       try {
         const event = JSON.parse(await msg.data.text());
-        this.postSong(event.title, event.artist, event.username, event.lyrics);
+        this.receiveSong(event);
+        //this.postSong(event.title, event.artist, event.username, event.lyrics);
       } catch {}
     };
   }
 
   postSong(title, artist, username, lyrics) {
     const songEvent = { title, artist, username, lyrics };
-    this.songs.push(songEvent);
+    //this.songs.push(songEvent);
+    this.socket.send(JSON.stringify(songEvent));
+  }
 
-    this.songs.forEach((songEvent) => {
-      this.handlers.forEach((handler) => handler(songEvent));
+  receiveSong(song) {
+    this.songs.push(song);
+
+    this.songs.forEach((e) => {
+      this.handlers.forEach((handler) => {
+        handler(e);
+      });
     });
   }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import "./home.css";
 import Button from "react-bootstrap/Button";
+import { songNotifier } from "../feed/song";
 
 export function Home({ userName }) {
   const [songTitle, setSongTitle] = React.useState("");
@@ -24,15 +25,16 @@ export function Home({ userName }) {
           lyrics: data.lyrics,
         });
 
-        fetch("/api/addSong", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: song,
-        }).catch((error) => {
-          console.error("Error adding song");
-        });
+        // fetch("/api/addSong", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: song,
+        // }).catch((error) => {
+        //   console.error("Error adding song");
+        // });
+        songNotifier.postSong(title, artist, userName, lyrics);
       })
       .catch((error) => {
         console.error("Error fetching lyrics");
