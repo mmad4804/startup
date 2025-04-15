@@ -26,20 +26,10 @@ export function Feed({ userName }) {
   React.useEffect(() => {
     songNotifier.addHandler(handleNewSong);
 
-    // fetch("/api/retrieveSongs")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setSongs(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching feed songs");
-    //     setSongs([]);
-    //   });
-
     return () => {
       songNotifier.removeHandler(handleNewSong);
     };
-  }); //removed dependency []
+  });
 
   async function handleNewSong(song) {
     let newSongs = [...feedSongs, song];
@@ -47,19 +37,6 @@ export function Feed({ userName }) {
       newSongs = newSongs.slice(newSongs.length - 10); // Keep only the latest 10 songs
     }
     setSongs(newSongs);
-
-    //setSongs([...feedSongs, song]);
-
-    // setSongs((prevSongs) => {
-    //   if (prevSongs.length > 10) {
-    //     prevSongs = prevSongs.slice(prevSongs.length - 11, prevSongs.length - 1); // Keep only the latest 10 songs
-    //   }
-    //   return prevSongs;
-    // });
-
-    // .catch((error) => {
-    //   console.error("Error adding song");
-    // });
 
     // let lyrics = "temp";
     // await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
@@ -84,20 +61,6 @@ export function Feed({ userName }) {
     //       }
     //       return newSongs;
     //     });
-
-    // fetch("api/updateList", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(feedSongs),
-    // });
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching lyrics");
-    //     setLyrics("No lyrics available");
-    //     return feedSongs;
-    //   });
   }
 
   function displayLyrics(lyrics) {

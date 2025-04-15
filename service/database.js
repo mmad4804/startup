@@ -60,24 +60,6 @@ async function addSong(song) {
 }
 
 async function getSongs() {
-  // const options = {
-  //   sort: { _id: -1 }, // Sort by the most recent
-  //   limit: 10, // Limit to the last 10 songs
-  // };
-  // const cursor = songCollection.find({}, options);
-  // const recentSongs = await cursor.toArray();
-
-  // let count = await songCollection.countDocuments();
-  // while (count > 10) {
-  //   const oldestSong = await songCollection
-  //     .find()
-  //     .sort({ _id: 1 })
-  //     .limit(1)
-  //     .toArray();
-  //   await songCollection.deleteOne({ _id: oldestSong[0]._id });
-  //   count = await songCollection.countDocuments();
-  // }
-
   return await songCollection.find().toArray();
 }
 
