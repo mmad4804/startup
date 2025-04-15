@@ -42,7 +42,7 @@ class SongNotifier {
     );
 
     this.socket.onopen = (event) => {
-      this.receiveSong(event);
+      //this.receiveSong(event);
       //this.postSong(event.title, event.artist, event.username, event.lyrics);
     };
 

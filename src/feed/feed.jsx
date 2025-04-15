@@ -26,14 +26,16 @@ export function Feed({ userName }) {
     };
   }); //removed dependency []
 
-  async function handleNewSong(song) {
-    setSongs((prevSongs) => {
-      let newSongs = [...prevSongs, song];
-      if (newSongs.length > 10) {
-        newSongs = newSongs.slice(newSongs.length - 11, newSongs.length - 1); // Keep only the latest 10 songs
-      }
-      return newSongs;
-    });
+  function handleNewSong(song) {
+    // setSongs((prevSongs) => {
+    //   let newSongs = [...prevSongs, song];
+    //   if (newSongs.length > 10) {
+    //     newSongs = newSongs.slice(newSongs.length - 11, newSongs.length - 1); // Keep only the latest 10 songs
+    //   }
+    //   return newSongs;
+    // });
+
+    setSongs([...feedSongs, song]);
     // let lyrics = "temp";
     // await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
     //   .then((response) => response.json())

@@ -35,6 +35,7 @@ export function Home({ userName }) {
         //   console.error("Error adding song");
         // });
         songNotifier.postSong(title, artist, userName, lyrics);
+        songNotifier.receiveSong(song);
       })
       .catch((error) => {
         console.error("Error fetching lyrics");
