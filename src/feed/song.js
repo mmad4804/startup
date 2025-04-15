@@ -47,7 +47,14 @@ class SongNotifier {
     };
 
     this.socket.onclose = (event) => {
-      //this.postSong()
+      //this.saveSongs(this.songs);
+      // fetch("api/updateList", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(songs),
+      // });
     };
 
     this.socket.onmessage = async (msg) => {
@@ -73,6 +80,10 @@ class SongNotifier {
         handler(e);
       });
     });
+  }
+
+  saveSongs(songs) {
+    this.songs = songs;
   }
 
   addHandler(handler) {

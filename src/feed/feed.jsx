@@ -9,6 +9,21 @@ export function Feed({ userName }) {
   const [lyrics, setLyrics] = React.useState("");
 
   React.useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const response = await fetch("/api/retrieveSongs");
+        const data = await response.json();
+        setSongs(data);
+      } catch (error) {
+        console.error("Error fetching feed songs");
+        setSongs([]);
+      }
+    };
+
+    fetchSongs();
+  }, []);
+
+  React.useEffect(() => {
     songNotifier.addHandler(handleNewSong);
 
     // fetch("/api/retrieveSongs")
@@ -36,6 +51,17 @@ export function Feed({ userName }) {
     // });
 
     setSongs([...feedSongs, song]);
+
+    fetch("/api/addSong", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: song,
+    }).catch((error) => {
+      console.error("Error adding song");
+    });
+
     // let lyrics = "temp";
     // await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
     //   .then((response) => response.json())
@@ -60,13 +86,13 @@ export function Feed({ userName }) {
     //       return newSongs;
     //     });
 
-    //     // fetch("api/updateList", {
-    //     //   method: "POST",
-    //     //   headers: {
-    //     //     "Content-Type": "application/json",
-    //     //   },
-    //     //   body: JSON.stringify(feedSongs),
-    //     // });
+    // fetch("api/updateList", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(feedSongs),
+    // });
     //   })
     //   .catch((error) => {
     //     console.error("Error fetching lyrics");
