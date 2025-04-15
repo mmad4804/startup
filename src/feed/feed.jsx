@@ -41,7 +41,7 @@ export function Feed({ userName }) {
     };
   }); //removed dependency []
 
-  function handleNewSong(song) {
+  async function handleNewSong(song) {
     // setSongs((prevSongs) => {
     //   let newSongs = [...prevSongs, song];
     //   if (newSongs.length > 10) {
@@ -52,15 +52,28 @@ export function Feed({ userName }) {
 
     setSongs([...feedSongs, song]);
 
-    fetch("/api/addSong", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: song,
-    }).catch((error) => {
-      console.error("Error adding song");
-    });
+    // await fetch("/api/addSong", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: song,
+    // });
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   setSongs(data);
+    // });
+
+    // setSongs((prevSongs) => {
+    //   if (prevSongs.length > 10) {
+    //     prevSongs = prevSongs.slice(prevSongs.length - 11, prevSongs.length - 1); // Keep only the latest 10 songs
+    //   }
+    //   return prevSongs;
+    // });
+
+    // .catch((error) => {
+    //   console.error("Error adding song");
+    // });
 
     // let lyrics = "temp";
     // await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)

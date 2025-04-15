@@ -25,15 +25,15 @@ export function Home({ userName }) {
           lyrics: data.lyrics,
         });
 
-        // fetch("/api/addSong", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: song,
-        // }).catch((error) => {
-        //   console.error("Error adding song");
-        // });
+        fetch("/api/addSong", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: song,
+        }).catch((error) => {
+          console.error("Error adding song");
+        });
         songNotifier.postSong(title, artist, userName, lyrics);
         songNotifier.receiveSong(song);
       })

@@ -49,7 +49,12 @@ async function addSong(song) {
 }
 
 async function getSongs() {
-  return await songCollection.find().toArray();
+  const options = {
+    sort: { _id: -1 }, // Sort by the most recent
+    limit: 10, // Limit to the last 10 songs
+  };
+  const cursor = songCollection.find({}, options);
+  return await cursor.toArray();
 }
 
 async function resetSongList(songs) {
