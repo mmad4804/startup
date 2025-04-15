@@ -42,27 +42,13 @@ export function Feed({ userName }) {
   }); //removed dependency []
 
   async function handleNewSong(song) {
-    // setSongs((prevSongs) => {
-    //   let newSongs = [...prevSongs, song];
-    //   if (newSongs.length > 10) {
-    //     newSongs = newSongs.slice(newSongs.length - 11, newSongs.length - 1); // Keep only the latest 10 songs
-    //   }
-    //   return newSongs;
-    // });
+    let newSongs = [...feedSongs, song];
+    if (newSongs.length > 10) {
+      newSongs = newSongs.slice(newSongs.length - 10); // Keep only the latest 10 songs
+    }
+    setSongs(newSongs);
 
-    setSongs([...feedSongs, song]);
-
-    // await fetch("/api/addSong", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: song,
-    // });
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   setSongs(data);
-    // });
+    //setSongs([...feedSongs, song]);
 
     // setSongs((prevSongs) => {
     //   if (prevSongs.length > 10) {
