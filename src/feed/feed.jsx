@@ -31,36 +31,29 @@ export function Feed({ userName }) {
     };
   });
 
-  async function handleNewSong(song) {
+  function handleNewSong(song) {
+    console.log("New song lyrics:", song.lyrics);
+    song.lyrics = "Loading, try again later";
     let newSongs = [...feedSongs, song];
     if (newSongs.length > 10) {
       newSongs = newSongs.slice(newSongs.length - 10); // Keep only the latest 10 songs
     }
     setSongs(newSongs);
 
-    // let lyrics = "temp";
-    // await fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     lyrics = data.lyrics;
+    let lyrics = "temp";
+    fetch(`https://api.lyrics.ovh/v1/${song.artist}/${song.title}`)
+      .then((response) => response.json())
+      .then((data) => {
+        lyrics = data.lyrics;
+        song.lyrics = lyrics;
 
-    //     const updatedSong = {
-    //       title: song.title,
-    //       artist: song.artist,
-    //       username: song.username,
-    //       lyrics: lyrics,
-    //     };
-
-    //     setSongs((prevSongs) => {
-    //       let newSongs = [...prevSongs, updatedSong];
-    //       if (newSongs.length > 10) {
-    //         newSongs = newSongs.slice(
-    //           newSongs.length - 11,
-    //           newSongs.length - 1
-    //         ); // Keep only the latest 10 songs
-    //       }
-    //       return newSongs;
-    //     });
+        // const updatedSong = {
+        //   title: song.title,
+        //   artist: song.artist,
+        //   username: song.username,
+        //   lyrics: lyrics,
+        // };
+      });
   }
 
   function displayLyrics(lyrics) {

@@ -29,7 +29,7 @@ class SongNotifier {
 
     this.songs.forEach((e) => {
       this.handlers.forEach((handler) => {
-        handler(e);
+        handler({ ...e });
       });
     });
   }
