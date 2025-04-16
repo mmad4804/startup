@@ -118,8 +118,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - My peerProxy.js file listens for the connection.
+- [x] **Frontend makes WebSocket connection** - The connection is made in my song.js file.
+- [x] **Data sent over WebSocket connection** - My home.jsx file calls postSong() which sends the original data over the websocket as a message.
+- [x] **WebSocket data displayed** - On the feed page, users can see the song posts of other users in real-time! 
+- [x] **Application is fully functional** - Users can post songs, view the songs of others, click the lyrics button to view the song lyrics, and add songs to their own saved lists!
